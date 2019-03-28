@@ -15,7 +15,7 @@ int main() {
     elev_set_motor_direction(DIRN_UP);
 
 
-
+get_sto
     enum State [INIT, IDLE, MOVE, WAIT, EM_STOP];
     State elev_state = INIT; //start state is init
 
@@ -37,6 +37,7 @@ int main() {
         //set state to emergencyStop if stop button is pressed
         if ( elev_get_stop_signal() ==1 ){
             elev_state = EM_STOP;
+            elev_set_motor_direction(0);
         }
 
         //check button, floor sensor, check timer
