@@ -34,20 +34,23 @@ int main() {
         }
 
 
+        //set state to emergencyStop if stop button is pressed
         if ( elev_get_stop_signal() ==1 ){
             elev_state = EM_STOP;
         }
 
-        updateOrderQueue(pressedButton)
         //check button, floor sensor, check timer
+        updateOrderQueue(pressedButton)
 
         switch (state){
             case INIT:
+                //moves elevator to 1st floor and switches to IDLE state
                 elev_motor_direction_t(-1);
                 updateCurrentFloor();
                 if currentFloor == 0{
                     elev_state = IDLE;
                 }
+                //what else needs initializing?
 
 
             case IDLE:
