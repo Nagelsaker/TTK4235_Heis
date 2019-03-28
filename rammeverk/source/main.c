@@ -1,5 +1,6 @@
 #include "elev.h"
 #include <stdio.h>
+#include "elevator.h"
 
 
 int main() {
@@ -13,6 +14,11 @@ int main() {
 
     elev_set_motor_direction(DIRN_UP);
 
+
+
+    enum State [INIT, IDLE, MOVE, WAIT, EM_STOP];
+    State elev_state = INIT; //start state is init
+
     while (1) {
         // Change direction when we reach top/bottom floor
         if (elev_get_floor_sensor_signal() == N_FLOORS - 1) {
@@ -25,6 +31,55 @@ int main() {
         if (elev_get_stop_signal()) {
             elev_set_motor_direction(DIRN_STOP);
             break;
+        }
+
+
+        if ( elev_get_stop_signal() ==1 ){
+            elev_state = EM_STOP;
+        }
+
+        updateOrderQueue(pressedButton)
+        //check button, floor sensor, check timer
+
+        switch (state){
+            case INIT:
+                elev_motor_direction_t(-1);
+                updateCurrentFloor();
+                if currentFloor == 0{
+                    elev_state = IDLE;
+                }
+
+
+            case IDLE:
+            //finnes ordre?
+            //gjør noe med det
+            //bytt state
+
+            case MOVE:
+                //elev_motor_direction_t(?);      //set direction from queue
+
+                updateCurrentFloor();
+                if currentFloor == TargetFloor{   //targetFloor from queue
+                    elev_state = WAIT;
+                }
+
+                //handle orders while moving
+
+            case WAIT:
+                elev_motor_direction_t(0);    //stops elevator
+                elev_set_door_open_lamp(1);   //opens doors for 3 seconds
+                timer();
+                elev_set_door_open_lamp(0);
+
+                elev_state = IDLE;            //switch to IDLE, handles next order
+
+
+
+
+            case EM_STOP:
+                emergencyStop(); //lights stop button, stops elevator, opens doors if on floor.
+                //needs to be implemented: reset buttons and queue
+
         }
     }
 
