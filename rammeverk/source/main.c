@@ -1,6 +1,9 @@
+
 #include "elev.h"
-#include <stdio.h>
 #include "elevator.h"
+#include "queue.h"
+#include <stdio.h>
+
 
 
 int main() {
@@ -13,7 +16,6 @@ int main() {
     printf("Press STOP button to stop elevator and exit program.\n");
 
     elev_set_motor_direction(DIRN_UP);
-
 
 
     enum State [INIT, IDLE, MOVE, WAIT, EM_STOP];
@@ -47,8 +49,7 @@ int main() {
             case INIT:
                 //moves elevator to 1st floor and switches to IDLE state
                 elev_motor_direction_t(-1);
-                updateCurrentFloor();
-                if currentFloor == 0{
+                if getCurrentFloor() == 0{
                     elev_state = IDLE;
                 }
                 //what else needs initializing?
@@ -58,12 +59,12 @@ int main() {
             //finnes ordre?
             //gjør noe med det
             //bytt state
+				elev_state = checkForOrders();
 
             case MOVE:
                 //elev_motor_direction_t(?);      //set direction from queue
 
-                updateCurrentFloor();
-                if currentFloor == TargetFloor{   //targetFloor from queue
+                if getCurrentFloor() == TargetFloor{   //targetFloor from queue
                     elev_state = WAIT;
                 }
 

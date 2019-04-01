@@ -20,8 +20,8 @@ void emergencyStop(){
 }
 
 
-  void updateCurrentFloor(){
+  int getCurrentFloor(){
       if ( elev_get_floor_sensor_signal() != -1 ){
-          currentFloor = elev_get_floor_sensor_signal;
+          return elev_get_floor_sensor_signal();
       }
   }
