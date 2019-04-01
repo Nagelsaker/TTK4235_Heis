@@ -1,6 +1,8 @@
 #include "elev.h"
-#include <stdio.h>
 #include "elevator.h"
+include "queue.h"
+#include <stdio.h>
+
 
 
 int main() {
@@ -41,7 +43,7 @@ int main() {
         updateOrderQueue(pressedButton)
         //check button, floor sensor, check timer
 
-        switch (state){
+        switch (elev_state){
             case INIT:
                 elev_motor_direction_t(-1);
                 updateCurrentFloor();
@@ -54,6 +56,7 @@ int main() {
             //finnes ordre?
             //gjør noe med det
             //bytt state
+				elev_state = checkForOrders();
 
             case MOVE:
                 //elev_motor_direction_t(?);      //set direction from queue
