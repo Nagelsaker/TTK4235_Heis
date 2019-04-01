@@ -677,13 +677,30 @@
 											"height": 13,
 											"text": "+updateLights()",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFp2XJ9hInMSc0=",
+											"_parent": {
+												"$ref": "AAAAAAFpxIJlYEcqB2c="
+											},
+											"model": {
+												"$ref": "AAAAAAFp2XJ9b4nJbqU="
+											},
+											"font": "Arial;13;0",
+											"left": 181,
+											"top": 219,
+											"width": 176.66162109375,
+											"height": 13,
+											"text": "+updateOrderQueue()",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 176,
 									"top": 184,
 									"width": 186.66162109375,
-									"height": 38
+									"height": 53
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -723,7 +740,7 @@
 							"left": 176,
 							"top": 136,
 							"width": 186.66162109375,
-							"height": 86,
+							"height": 101,
 							"nameCompartment": {
 								"$ref": "AAAAAAFpxIJlYEckVgg="
 							},
@@ -1044,7 +1061,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFpxIIe2EbN7Do="
 							},
-							"name": "int state"
+							"name": "int state",
+							"type": ""
 						}
 					]
 				},
@@ -1062,7 +1080,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFpxIJMQEb3Orw="
 							},
-							"name": "currentFloor"
+							"name": "currentFloor",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1070,7 +1089,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFpxIJMQEb3Orw="
 							},
-							"name": "currentDirection"
+							"name": "currentDirection",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1078,7 +1098,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFpxIJMQEb3Orw="
 							},
-							"name": "targetFloor"
+							"name": "targetFloor",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -1156,7 +1177,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFpxIJlX0chyek="
 							},
-							"name": "int[4][2] queue"
+							"name": "int[4][2] queue",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -1174,7 +1196,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFpxJoY0keiOJw="
 									},
-									"name": "currentFloor"
+									"name": "currentFloor",
+									"type": ""
 								}
 							]
 						},
@@ -1185,6 +1208,14 @@
 								"$ref": "AAAAAAFpxIJlX0chyek="
 							},
 							"name": "updateLights"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFp2XJ9b4nJbqU=",
+							"_parent": {
+								"$ref": "AAAAAAFpxIJlX0chyek="
+							},
+							"name": "updateOrderQueue"
 						}
 					]
 				},
@@ -1249,9 +1280,9 @@
 												"$ref": "AAAAAAFpoKPLdW5erDE="
 											},
 											"font": "Arial;13;0",
-											"left": 75,
+											"left": 75.97900390625,
 											"top": 10,
-											"width": 106,
+											"width": 115.9052734375,
 											"height": 13,
 											"text": "SequenceDiagram1"
 										},
@@ -1264,7 +1295,7 @@
 											"font": "Arial;13;1",
 											"left": 10,
 											"top": 10,
-											"width": 60,
+											"width": 60.97900390625,
 											"height": 13,
 											"text": "interaction"
 										}
@@ -5420,7 +5451,8 @@
 					"_parent": {
 						"$ref": "AAAAAAFpwN+aMDFY0tc="
 					},
-					"name": "Role3"
+					"name": "Role3",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -5437,7 +5469,8 @@
 					"_parent": {
 						"$ref": "AAAAAAFpwN+aMDFY0tc="
 					},
-					"name": "Role5"
+					"name": "Role5",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -5445,7 +5478,8 @@
 					"_parent": {
 						"$ref": "AAAAAAFpwN+aMDFY0tc="
 					},
-					"name": "Role6"
+					"name": "Role6",
+					"type": ""
 				}
 			]
 		}

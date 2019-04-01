@@ -5,6 +5,6 @@ void emergencyStop();
 
 int currentFloor;
 
-void updateCurrentFloor();
+int getCurrentFloor();
 
 #endif

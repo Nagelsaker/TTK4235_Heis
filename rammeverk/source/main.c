@@ -48,8 +48,7 @@ int main() {
             case INIT:
                 //moves elevator to 1st floor and switches to IDLE state
                 elev_motor_direction_t(-1);
-                updateCurrentFloor();
-                if currentFloor == 0{
+                if getCurrentFloor() == 0{
                     elev_state = IDLE;
                 }
                 //what else needs initializing?
@@ -64,8 +63,7 @@ int main() {
             case MOVE:
                 //elev_motor_direction_t(?);      //set direction from queue
 
-                updateCurrentFloor();
-                if currentFloor == TargetFloor{   //targetFloor from queue
+                if getCurrentFloor() == TargetFloor{   //targetFloor from queue
                     elev_state = WAIT;
                 }
 
