@@ -62,19 +62,16 @@ int main() {
             //gjør noe med det
             //bytt state
 				elev_state = checkForOrders();
+				break;
 
             case MOVE:
                 //elev_motor_direction_t(?);      //set direction from queue
-
-                if (getCurrentFloor() == targetFloor){   //targetFloor from queue
-                    elev_state = WAIT;
-                }
-
                 //handle orders while moving
 				break;
+
             case WAIT:
                 elev_set_motor_direction_t(0);    //stops elevator
-                elev_set_door_open_lamp(1);   //opens doors for 3 seconds
+				elev_set_door_open_lamp(1);   //opens doors for 3 seconds
 				startTimer();
 				break;
 
