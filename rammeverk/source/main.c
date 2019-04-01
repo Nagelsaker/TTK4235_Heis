@@ -1,6 +1,6 @@
 #include "elev.h"
 #include "elevator.h"
-include "queue.h"
+#include "queue.h"
 #include <stdio.h>
 
 
@@ -15,7 +15,6 @@ int main() {
     printf("Press STOP button to stop elevator and exit program.\n");
 
     elev_set_motor_direction(DIRN_UP);
-
 
 
     enum State [INIT, IDLE, MOVE, WAIT, EM_STOP];
@@ -36,20 +35,24 @@ int main() {
         }
 
 
+        //set state to emergencyStop if stop button is pressed
         if ( elev_get_stop_signal() ==1 ){
             elev_state = EM_STOP;
+            elev_set_motor_direction(0);
         }
 
-        updateOrderQueue(pressedButton)
         //check button, floor sensor, check timer
+        updateOrderQueue(pressedButton)
 
-        switch (elev_state){
+        switch (state){
             case INIT:
+                //moves elevator to 1st floor and switches to IDLE state
                 elev_motor_direction_t(-1);
                 updateCurrentFloor();
                 if currentFloor == 0{
                     elev_state = IDLE;
                 }
+                //what else needs initializing?
 
 
             case IDLE:
