@@ -15,7 +15,7 @@ int main() {
     elev_set_motor_direction(DIRN_UP);
 
 
-get_sto
+
     enum State [INIT, IDLE, MOVE, WAIT, EM_STOP];
     State elev_state = INIT; //start state is init
 
