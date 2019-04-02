@@ -59,12 +59,18 @@ int main() {
             //finnes ordre?
             //gjør noe med det
             //bytt state
-				elev_state = checkForOrders();
+				        elev_state = checkForOrders();
 
             case MOVE:
-                //elev_motor_direction_t(?);      //set direction from queue
+              
 
-                if getCurrentFloor() == TargetFloor{   //targetFloor from queue
+
+                //elev_motor_direction_t(?);      //set direction from queue
+                elev_motor_direction_t(0);
+
+
+
+                if getCurrentFloor() == targetFloor{   //targetFloor from queue
                     elev_state = WAIT;
                 }
 

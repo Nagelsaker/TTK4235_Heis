@@ -7,4 +7,8 @@ int currentFloor;
 
 int getCurrentFloor();
 
+
+int targetFloor;
+
+
 #endif
