@@ -43,9 +43,16 @@ int main() {
         }
 
         //check buttons, floor sensor, check timer
-		updateOrderQueue();
-		if (getTimer() < 3) { elev_state = WAIT; }
-		else elev_set_door_open_lamp(0);
+		    updateOrderQueue();
+		    if (getTimer() < 3) { elev_state = WAIT; }
+		    else elev_set_door_open_lamp(0);
+
+
+        if (elev_get_stop_signal() == 1){
+            elev_set_stop_lamp(1); //L6
+            elev_state = EM_STOP;
+          }
+
 
         switch (elev_state){
             case INIT:
@@ -58,27 +65,30 @@ int main() {
 
 
             case IDLE:
-            //finnes ordre?
-            //gjør noe med det
-            //bytt state
-				elev_state = checkForOrders();
-				break;
+                //finnes ordre?
+                //gjør noe med det
+                //bytt state
+				        elev_state = checkForOrders();
+				        break;
 
             case MOVE:
                 //elev_motor_direction_t(?);      //set direction from queue
                 //handle orders while moving
-				break;
+				        break;
 
             case WAIT:
                 elev_set_motor_direction_t(0);    //stops elevator
-				elev_set_door_open_lamp(1);   //opens doors for 3 seconds
-				startTimer();
-				break;
+				        elev_set_door_open_lamp(1);   //opens doors for 3 seconds
+				        startTimer();
+				        break;
 
             case EM_STOP:
                 emergencyStop(); //lights stop button, stops elevator, opens doors if on floor.
                 //needs to be implemented: reset buttons and queue
-				break;
+                if (elev_get_stop_signal() != 1) {
+                    elev_set_stop_lamp(0);  //L6
+                    elev_state = IDLE; }
+				        break;
 
         }
     }
