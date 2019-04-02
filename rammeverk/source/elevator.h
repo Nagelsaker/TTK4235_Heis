@@ -8,5 +8,4 @@ int lastDirection = 0;
 int getCurrentFloor();
 
 enum State handleOrders();
-
 #endif

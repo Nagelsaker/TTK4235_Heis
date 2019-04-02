@@ -29,26 +29,17 @@ int main() {
             elev_set_motor_direction(DIRN_UP);
         }
 
-        // Stop elevator and exit program if the stop button is pressed
-        if (elev_get_stop_signal()) {
-            elev_set_motor_direction(DIRN_STOP);
-            break;
-        }
-
-
-        //set state to emergencyStop if stop button is pressed
-        if ( elev_get_stop_signal() ==1 ){
-            elev_state = EM_STOP;
-            elev_set_motor_direction(0);
-        }
-
         //check buttons, floor sensor, check timer
 		updateOrderQueue();
-		if (!hasTimerPassed3s() && (elev_get_stop_signal() == 0)) {
+		if (!hasTimerPassed3s() && !elev_get_stop_signal()) {
             elev_state = WAIT;
-        } else if (!hasTimerPassed3s()) {
-            elev_state = EM_STOP;
         }
+
+        //set state to emergencyStop if stop button is pressed
+        if (elev_get_stop_signal()){
+            elev_set_stop_lamp(1); //L6
+            elev_state = EM_STOP;
+          }
 
 		else elev_set_door_open_lamp(0);
 
@@ -86,7 +77,10 @@ int main() {
             case EM_STOP:
                 emergencyStop(); //lights stop button, stops elevator, opens doors if on floor.
                 //needs to be implemented: reset buttons and queue
-				break;
+                if (elev_get_stop_signal() != 1) {
+                    elev_set_stop_lamp(0);  //L6
+                    elev_state = IDLE; }
+                        break;
 
         }
     }
