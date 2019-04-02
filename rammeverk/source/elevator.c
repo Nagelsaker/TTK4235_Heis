@@ -24,4 +24,5 @@ void emergencyStop(){
       if ( elev_get_floor_sensor_signal() != -1 ){
           return elev_get_floor_sensor_signal();
       }
+	  return -1;
   }

@@ -1,8 +1,9 @@
-
 #include "elev.h"
 #include "elevator.h"
 #include "queue.h"
+#include "timer.h"
 #include <stdio.h>
+#include <time.h>
 
 
 
@@ -18,8 +19,7 @@ int main() {
     elev_set_motor_direction(DIRN_UP);
 
 
-    enum State [INIT, IDLE, MOVE, WAIT, EM_STOP];
-    State elev_state = INIT; //start state is init
+    enum State elev_state = INIT; //start state is init
 
     while (1) {
         // Change direction when we reach top/bottom floor
@@ -42,14 +42,16 @@ int main() {
             elev_set_motor_direction(0);
         }
 
-        //check button, floor sensor, check timer
-        updateOrderQueue(pressedButton)
+        //check buttons, floor sensor, check timer
+		updateOrderQueue();
+		if (getTimer() < 3) { elev_state = WAIT; }
+		else elev_set_door_open_lamp(0);
 
-        switch (state){
+        switch (elev_state){
             case INIT:
                 //moves elevator to 1st floor and switches to IDLE state
-                elev_motor_direction_t(-1);
-                if getCurrentFloor() == 0{
+                elev_set_motor_direction_t(-1);
+                if (getCurrentFloor() == 0) {
                     elev_state = IDLE;
                 }
                 //what else needs initializing?
@@ -59,37 +61,24 @@ int main() {
             //finnes ordre?
             //gjør noe med det
             //bytt state
-				        elev_state = checkForOrders();
+				elev_state = checkForOrders();
+				break;
 
             case MOVE:
-              
-
-
                 //elev_motor_direction_t(?);      //set direction from queue
-                elev_motor_direction_t(0);
-
-
-
-                if getCurrentFloor() == targetFloor{   //targetFloor from queue
-                    elev_state = WAIT;
-                }
-
                 //handle orders while moving
+				break;
 
             case WAIT:
-                elev_motor_direction_t(0);    //stops elevator
-                elev_set_door_open_lamp(1);   //opens doors for 3 seconds
-                timer();
-                elev_set_door_open_lamp(0);
-
-                elev_state = IDLE;            //switch to IDLE, handles next order
-
-
-
+                elev_set_motor_direction_t(0);    //stops elevator
+				elev_set_door_open_lamp(1);   //opens doors for 3 seconds
+				startTimer();
+				break;
 
             case EM_STOP:
                 emergencyStop(); //lights stop button, stops elevator, opens doors if on floor.
                 //needs to be implemented: reset buttons and queue
+				break;
 
         }
     }

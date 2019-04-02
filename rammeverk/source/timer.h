@@ -1,6 +1,5 @@
-#ifndef __TIMER_H__
-#deifne __TIMER_H__
+#include <time.h>
 
-void timer();
-
-#endif
+time_t timer;
+void startTimer();
+time_t getTimer();
