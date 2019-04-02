@@ -39,7 +39,7 @@ void removeFromOrder(int f) {
 	int flr = f;
 	if (flr < 0 || flr > 3) {
 		printf("ERROR removing floor from order!");
-		return NULL;
+		return;
 	}
 	for (int i = 0; i < 2; i++) {
 		queue[i][flr] = 0;

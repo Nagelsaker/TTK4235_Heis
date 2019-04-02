@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "elev.h"
 #include "elevator.h"
-typedef enum State { INIT, IDLE, MOVE, WAIT, EM_STOP } State;
 
 int a = IDLE;
 

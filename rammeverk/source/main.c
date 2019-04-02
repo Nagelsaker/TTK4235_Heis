@@ -19,7 +19,7 @@ int main() {
     elev_set_motor_direction(DIRN_UP);
 
 
-    enum State elev_state = INIT; //start state is init
+    enum state elev_state = INIT; //start state is init
 
     while (1) {
         // Change direction when we reach top/bottom floor
@@ -46,12 +46,12 @@ int main() {
         switch (elev_state){
             case INIT:
                 //moves elevator to 1st floor and switches to IDLE state
-                elev_set_motor_direction_t(-1);
+                elev_set_motor_direction(DIRN_DOWN);
                 if (getCurrentFloor() == 0) {
                     elev_state = IDLE;
                 }
                 //what else needs initializing?
-
+                break;
 
             case IDLE:
             //finnes ordre?
@@ -67,7 +67,7 @@ int main() {
 				break;
 
             case WAIT:
-                elev_set_motor_direction_t(DIRN_STOP);    //stops elevator
+                elev_set_motor_direction(DIRN_STOP);    //stops elevator
 				elev_set_door_open_lamp(1);   //opens doors for 3 seconds
 				startTimer();
                 removeFromOrder(getCurrentFloor());
@@ -79,8 +79,9 @@ int main() {
                 //needs to be implemented: reset buttons and queue
                 if (elev_get_stop_signal() != 1) {
                     elev_set_stop_lamp(0);  //L6
-                    elev_state = IDLE; }
-                        break;
+                    elev_state = IDLE;
+                }
+                break;
 
         }
     }
