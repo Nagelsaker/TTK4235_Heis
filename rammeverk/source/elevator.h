@@ -1,10 +1,12 @@
 #ifndef __ELEVATOR_H__
-#deifne __ELEVATOR_H__
+#define __ELEVATOR_H__
 
 void emergencyStop();
 
-int currentFloor;
+int lastDirection = 0;
 
 int getCurrentFloor();
+
+enum State handleOrders();
 
 #endif

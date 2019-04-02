@@ -44,7 +44,12 @@ int main() {
 
         //check buttons, floor sensor, check timer
 		updateOrderQueue();
-		if (getTimer() < 3) { elev_state = WAIT; }
+		if (!hasTimerPassed3s() && (elev_get_stop_signal() == 0)) {
+            elev_state = WAIT;
+        } else if (!hasTimerPassed3s()) {
+            elev_state = EM_STOP;
+        }
+
 		else elev_set_door_open_lamp(0);
 
         switch (elev_state){
@@ -67,12 +72,15 @@ int main() {
             case MOVE:
                 //elev_motor_direction_t(?);      //set direction from queue
                 //handle orders while moving
+                elev_state = handleOrders();
 				break;
 
             case WAIT:
-                elev_set_motor_direction_t(0);    //stops elevator
+                elev_set_motor_direction_t(DIRN_STOP);    //stops elevator
 				elev_set_door_open_lamp(1);   //opens doors for 3 seconds
 				startTimer();
+                removeFromOrder(getCurrentFloor());
+                elev_state = IDLE;
 				break;
 
             case EM_STOP:

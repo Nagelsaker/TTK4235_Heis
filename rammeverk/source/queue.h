@@ -16,3 +16,4 @@ int queue[2][N_FLOORS];
 int checkForOrders();
 
 void updateOrderQueue();
+void removeFromOrder(int floor);
