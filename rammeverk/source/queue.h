@@ -3,7 +3,7 @@
 #include "elev.h"
 #include "elevator.h"
 
-int a = IDLE;
+
 
 // queue is a matrix on the form:
 //		| 1	| 2	| 3	| 4	|

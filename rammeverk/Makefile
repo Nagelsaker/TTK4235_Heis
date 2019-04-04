@@ -6,7 +6,7 @@ OBJ := $(SOURCES:%.c=$(BUILD_DIR)/%.o)
 SRC_DIR := source
 SRC := $(SOURCES:%.c=$(SRC_DIR)/%.c)
 
-CC := gcc
+CC := clang
 CFLAGS := -O0 -g3 -Wall -Werror -std=gnu99
 
 LDFLAGS := -lcomedi -lm

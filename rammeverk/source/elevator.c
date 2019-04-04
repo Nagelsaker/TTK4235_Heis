@@ -28,17 +28,20 @@ void emergencyStop(){
   }
 
 
-enum state handleOrders() {
+int handleOrders() {
     int cfloor;
     switch(lastDirection) {
         case DIRN_STOP:
+        cfloor = getCurrentFloor();
             // Check orders in both directions
             // Can only be in this state if there were no orders previously
             for (int i = 0; i < N_FLOORS; i++) {
                 for (int j = 0; j < 2; j++) {
-                    if (queue[j][i] == 1) {
+                    if (queue[j][i] == 1 && (!(i == 0 && j == 1)) && (!(i == 3 && j == 0)) {  //loops through all buttons except down button in 1st floor and up button on 1st floor.
                         lastDirection = (j == 0) ? DIRN_UP : DIRN_DOWN;
-
+                        if ((j == 1) && (i > cfloor)) {
+                            elev_set_motor_direction(DIRN_UP);
+                        }
                         if (getCurrentFloor() == i) {
                             return WAIT;
                         } else {
@@ -51,11 +54,15 @@ enum state handleOrders() {
         case DIRN_DOWN:
             // Check orders from current floor and down
             cfloor = getCurrentFloor(); // (-1) to 3
+            int qfloor = -1;
             if ((cfloor != -1) || (cfloor != 0)) {
                 // Check for more orders in the same direction
                 int isMoreOrders = 0;
                 for (int i = cfloor - 1; i > -1; i--) {
-                    if (queue[1][i] == 1) isMoreOrders++;
+                    if (queue[1][i] == 1) {
+                        isMoreOrders++;
+                        qfloor = i;
+                    }
                 }
                 // Return correct next elevator state
                 if ((queue[1][cfloor] == 1) && isMoreOrders) {
@@ -63,8 +70,10 @@ enum state handleOrders() {
                 } else if (queue[0][cfloor] == 1) {
                     lastDirection = DIRN_STOP;
                     return WAIT;
-                } else if (isMoreOrders) {
+                } else if (isMoreOrders && (cfloor > qfloor)) {
                     elev_set_motor_direction(DIRN_DOWN);
+                    return MOVE;
+                } else if (isMoreOrders) {
                     return MOVE;
                 } else {
                     printf("ERROR while moving downwards\n");
@@ -78,11 +87,15 @@ enum state handleOrders() {
         case DIRN_UP:
             // Check orders from current floor and up
             cfloor = getCurrentFloor(); // (-1) to 3
+            qfloor = 4;
             if ((cfloor != -1) && (cfloor != 3)) {
                 // Check for more orders in the same direction
                 int isMoreOrders = 0;
                 for (int i = cfloor + 1; i < N_FLOORS; i++) {
-                    if (queue[0][i] == 1) isMoreOrders++;
+                    if (queue[0][i] == 1) {
+                        isMoreOrders++;
+                        qfloor = i;
+                    }
                 }
                 // return correct next elevator state
                 if ((queue[0][cfloor] == 1) && isMoreOrders) {
@@ -90,9 +103,11 @@ enum state handleOrders() {
                 } else if (queue[0][cfloor] == 1) {
                     lastDirection = DIRN_STOP;
                     return WAIT;
-                } else if (isMoreOrders) {
+                } else if (isMoreOrders && (cfloor < qfloor)) {
                     elev_set_motor_direction(DIRN_UP);
                     return MOVE;
+                } else if (isMoreOrders) {
+
                 } else {
                     printf("ERROR while moving upwards\n");
                     return EM_STOP;

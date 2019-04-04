@@ -11,9 +11,9 @@ typedef enum state {
 
 void emergencyStop();
 
-int lastDirection = 0;
+int lastDirection;
 
 int getCurrentFloor();
 
-enum state handleOrders();
+int handleOrders();
 #endif

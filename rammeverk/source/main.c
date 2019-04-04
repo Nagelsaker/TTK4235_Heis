@@ -16,7 +16,8 @@ int main() {
 
     printf("Press STOP button to stop elevator and exit program.\n");
 
-    elev_set_motor_direction(DIRN_UP);
+    // elev_set_motor_direction(DIRN_UP);
+    lastDirection = 0;
 
 
     enum state elev_state = INIT; //start state is init

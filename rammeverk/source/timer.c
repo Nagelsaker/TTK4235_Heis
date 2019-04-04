@@ -1,6 +1,6 @@
 #include "timer.h"
 #include <stdio.h>
-clock_t end;
+//clock_t end;
 time_t timer;
 
 int hasTimerPassed3s() {
@@ -13,6 +13,6 @@ int hasTimerPassed3s() {
 
 void startTimer() {
 
-	end = clock() + CLOCKS_PER_SEC * 3;
+	//end = clock() + CLOCKS_PER_SEC * 3;
 	timer = time(NULL);
 }

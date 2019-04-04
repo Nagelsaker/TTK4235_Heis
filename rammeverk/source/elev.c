@@ -10,6 +10,7 @@
 
 #include <assert.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 // Number of signals and lamps on a per-floor basis (excl sensor)
 #define N_BUTTONS 3
@@ -106,7 +107,9 @@ int elev_get_floor_sensor_signal(void) {
 void elev_set_floor_indicator(int floor) {
     assert(floor >= 0);
     assert(floor < N_FLOORS);
-
+    if (floor < 0 || floor > N_FLOORS) {
+        printf("Floor out of bounds");
+    }
     // Binary encoding. One light must always be on.
     if (floor & 0x02)
         io_set_bit(LIGHT_FLOOR_IND1);
