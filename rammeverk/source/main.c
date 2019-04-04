@@ -23,6 +23,7 @@ int main() {
     enum state elev_state = INIT; //start state is init
 
     while (1) {
+
         // Change direction when we reach top/bottom floor
         /*
         if (elev_get_floor_sensor_signal() == N_FLOORS - 1) {
@@ -45,7 +46,7 @@ int main() {
             elev_set_stop_lamp(1); //L6
             elev_state = EM_STOP;
         }
-
+        //printf("elev_state = %d\n", elev_state);
         switch (elev_state){
             case INIT:
                 //moves elevator to 1st floor and switches to IDLE state

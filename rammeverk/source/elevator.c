@@ -54,24 +54,6 @@ int determineDirection() {
                   }
                 }
               }
-
-              // Check COMMAND buttons
-              /*
-              for (int flr = 0; flr < N_FLOORS; flr++) {
-                if (queue[flr][2] == 1) {
-                  if (cfloor == flr) {
-                    return WAIT;
-                  } else if (cfloor < flr) {
-                    elev_set_motor_direction(DIRN_UP);
-                    lastDirection = DIRN_UP;
-                    return MOVE;
-                  } else if (cfloor > flr) {
-                    elev_set_motor_direction(DIRN_DOWN);
-                    lastDirection = DIRN_DOWN;
-                    return MOVE;
-                  }
-                }
-              }*/
             return IDLE;
             break;
 
@@ -79,6 +61,7 @@ int determineDirection() {
         // Check orders from current floor and down
         cfloor = getCurrentFloor(); // (-1) to 3
         int isMoreOrders = 0;
+        state returnState = EM_STOP;
 
         // Checks if the elevator is at floor nr 2, 3 or 4
         if ((cfloor != -1) && (cfloor != 0)) {
@@ -86,26 +69,37 @@ int determineDirection() {
           for (int flr = cfloor - 1; flr > -1; flr--) {
             for (int butn = 1; butn < 3; butn++) {
               if (queue[butn][flr] == 1) {
-                isMoreOrders++;
+                isMoreOrders = 1;
               }
             }
           }
           // Check for down- and command-orders at current floor, and determine next state
           for (int butn = 1; butn < 3; butn++) {
             if ((queue[butn][cfloor] == 1) && isMoreOrders) {
-              return WAIT;
+              returnState = WAIT;
             } else if (queue[butn][cfloor] == 1) {
               lastDirection = DIRN_STOP;
-              return WAIT;
+              returnState = WAIT;
             } else if (isMoreOrders) {
-              return MOVE;
+              returnState = MOVE;
             }
-          }
+          }/*
+          //if elevator is moving down to where a BUTTON_CALL_UP has been pressed
+          if (queue[BUTTON_CALL_UP][cfloor] == 1 && !isMoreOrders){
+              lastDirection = DIRN_UP;
+              return WAIT;
+          } else {
+            return MOVE;
+          } */
         } else if (cfloor == -1) {
-          return MOVE;
+          returnState = MOVE;
         } else if (cfloor == 0) {
           lastDirection = DIRN_STOP;
-          return WAIT;
+          returnState = WAIT;
+        }
+        if (returnState != EM_STOP) {
+          if (returnState == MOVE) elev_set_motor_direction(DIRN_DOWN);
+          return returnState;
         }
         break;
 
@@ -113,6 +107,7 @@ int determineDirection() {
             // Check orders from current floor and up
             cfloor = getCurrentFloor(); // (-1) to 3
             isMoreOrders = 0;
+            returnState = EM_STOP;
 
             // Checks if the elevator is at floor nr 1, 2, or 3
             if ((cfloor != -1) && (cfloor != 3)) {
@@ -120,36 +115,40 @@ int determineDirection() {
               for (int flr = cfloor + 1; flr < N_FLOORS; flr++) {
                 for (int butn = 0; butn < 3; butn += 2) {
                   if (queue[butn][flr] == 1) {
-                    isMoreOrders++;
+                    isMoreOrders = 1;
                   }
                 }
               }
               // Check for up- and command-orders at current floor, and determine next state
               for (int butn = 0; butn < 3; butn += 2) {
                 if ((queue[butn][cfloor] == 1) && isMoreOrders) {
-                  return WAIT;
+                  returnState = WAIT;
                 } else if (queue[butn][cfloor] == 1) {
                   lastDirection = DIRN_STOP;
-                  return WAIT;
+                  returnState = WAIT;
                 } else if (isMoreOrders) {
-                  return MOVE;
+                  returnState = MOVE;
                 }
-              }
+              } /*
             //if elevator is moving up to where a BUTTON_CALL_DOWN has been pressed
             if (queue[BUTTON_CALL_DOWN][cfloor] == 1 && !isMoreOrders){
                 lastDirection = DIRN_DOWN;
                 return WAIT;
             } else {
               return MOVE;
-            }
+            } */
 
           } else if (cfloor == -1) {
-            return MOVE;
+            returnState = MOVE;
           } else if (cfloor == 3) {
             lastDirection = DIRN_STOP;
-            return WAIT;
+            returnState = WAIT;
           }
-            break;
+          if (returnState != EM_STOP) {
+            if (returnState == MOVE) elev_set_motor_direction(DIRN_UP);
+            return returnState;
+          };
+          break;
     }
     printf("ERROR while moving\n");
     return EM_STOP;
