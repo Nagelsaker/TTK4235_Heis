@@ -49,7 +49,7 @@ int main() {
         switch (elev_state){
             case INIT:
                 //moves elevator to 1st floor and switches to IDLE state
-                printf("INIT\n");
+                //printf("INIT\n");
                 elev_set_motor_direction(DIRN_DOWN);
                 if (getCurrentFloor() == 0) {
                     elev_set_motor_direction(DIRN_STOP);
@@ -59,7 +59,7 @@ int main() {
                 break;
 
             case IDLE:
-              printf("IDLE\n");
+              //printf("IDLE\n");
               //finnes ordre?
               //gjør noe med det
               //bytt state
@@ -67,7 +67,7 @@ int main() {
       				break;
 
             case MOVE:
-                printf("MOVE\n");
+                //printf("MOVE\n");
                 //elev_motor_direction_t(?);      //set direction from queue
                 //handle orders while moving
                 elev_state = determineDirection();
@@ -85,7 +85,7 @@ int main() {
 		            break;
 
             case EM_STOP:
-                printf("EM_STOP\n");
+                //printf("EM_STOP\n");
                 emergencyStop(); //lights stop button, stops elevator, opens doors if on floor.
                 //needs to be implemented: reset buttons and queue
                 if (elev_get_stop_signal() != 1) {
