@@ -9,8 +9,9 @@
 //		| 1	| 2	| 3	| 4	|
 //	UP	| x	| x	| x	| x	|
 // Down	| x	| x	| x	| x	|
+// Elev | x | x | x | x |
 //
-int queue[2][N_FLOORS];
+int queue[3][N_FLOORS];
 
 int checkForOrders();
 
