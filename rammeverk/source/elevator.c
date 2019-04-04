@@ -28,7 +28,7 @@ void emergencyStop(){
   }
 
 
-int handleOrders() {
+int determineDirection() {
     int cfloor;
     switch(lastDirection) {
         case DIRN_STOP:
@@ -37,7 +37,7 @@ int handleOrders() {
             // Can only be in this state if there were no orders previously
             for (int i = 0; i < N_FLOORS; i++) {
                 for (int j = 0; j < 2; j++) {
-                    if (queue[j][i] == 1 && (!(i == 0 && j == 1)) && (!(i == 3 && j == 0)) {  //loops through all buttons except down button in 1st floor and up button on 1st floor.
+                    if (queue[j][i] == 1) {
                         lastDirection = (j == 0) ? DIRN_UP : DIRN_DOWN;
                         if ((j == 1) && (i > cfloor)) {
                             elev_set_motor_direction(DIRN_UP);

@@ -125,8 +125,12 @@ void elev_set_floor_indicator(int floor) {
 int elev_get_button_signal(elev_button_type_t button, int floor) {
     assert(floor >= 0);
     assert(floor < N_FLOORS);
-    assert(!(button == BUTTON_CALL_UP && floor == N_FLOORS - 1));
-    assert(!(button == BUTTON_CALL_DOWN && floor == 0));
+    if(button == BUTTON_CALL_UP && floor == N_FLOORS - 1){
+      return 0;
+    }
+    if ((button == BUTTON_CALL_DOWN && floor == 0)) {
+      return 0;
+    }
     assert(button == BUTTON_CALL_UP || button == BUTTON_CALL_DOWN || button == BUTTON_COMMAND);
 
     if (io_read_bit(button_channel_matrix[floor][button]))
@@ -138,8 +142,12 @@ int elev_get_button_signal(elev_button_type_t button, int floor) {
 void elev_set_button_lamp(elev_button_type_t button, int floor, int value) {
     assert(floor >= 0);
     assert(floor < N_FLOORS);
-    assert(!(button == BUTTON_CALL_UP && floor == N_FLOORS - 1));
-    assert(!(button == BUTTON_CALL_DOWN && floor == 0));
+    if ((button == BUTTON_CALL_UP && floor == N_FLOORS - 1)) {
+      return;
+    }
+    if ((button == BUTTON_CALL_DOWN && floor == 0)) {
+      return;
+    }
     assert(button == BUTTON_CALL_UP || button == BUTTON_CALL_DOWN || button == BUTTON_COMMAND);
 
     if (value)

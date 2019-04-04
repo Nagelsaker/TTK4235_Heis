@@ -13,7 +13,7 @@ int checkForOrders() {
 void updateOrderQueue() {
 	// Check floor panel
 	for (int i = 0; i < N_FLOORS; i++) {
-		for (int j = BUTTON_CALL_UP; j < BUTTON_COMMAND; j++) {
+		for (int j = BUTTON_CALL_UP; j < 2; j++) {
 			// j = (BUTTON_CALL_UP = 0, BUTTON_CALL_DOWN = 1)
 			if (elev_get_button_signal(j, i) == 1) {
 				queue[j][i] = 1;

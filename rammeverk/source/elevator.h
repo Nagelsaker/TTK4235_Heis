@@ -15,5 +15,5 @@ int lastDirection;
 
 int getCurrentFloor();
 
-int handleOrders();
+int determineDirection();
 #endif
