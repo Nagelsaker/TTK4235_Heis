@@ -51,6 +51,7 @@ int main() {
             case INIT:
                 //moves elevator to 1st floor and switches to IDLE state
                 //printf("INIT\n");
+                resetQueueAndLights();
                 elev_set_motor_direction(DIRN_DOWN);
                 if (getCurrentFloor() == 0) {
                     elev_set_motor_direction(DIRN_STOP);
@@ -88,7 +89,7 @@ int main() {
             case EM_STOP:
                 //printf("EM_STOP\n");
                 emergencyStop(); //lights stop button, stops elevator, opens doors if on floor.
-                //needs to be implemented: reset buttons and queue
+                resetQueueAndLights();
                 if (elev_get_stop_signal() != 1) {
                     elev_set_stop_lamp(0);  //L6
                     elev_state = IDLE;

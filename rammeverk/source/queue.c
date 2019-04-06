@@ -13,26 +13,26 @@ int checkForOrders() {
 void updateOrderQueue() {
 	// Check floor panel
 	for (int flr = 0; flr < N_FLOORS; flr++) {
-		for (int butn = BUTTON_CALL_UP; butn < 2; butn++) {
+		for (int butn = 0; butn < 3; butn++) {
 			// j = (BUTTON_CALL_UP = 0, BUTTON_CALL_DOWN = 1)
 			if (elev_get_button_signal(butn, flr) == 1) {
 				queue[butn][flr] = 1;
 			}
 		}
 	}
-
+/*
 	// Check elevator panel
 	// If button is pressed, calculate the direction from current floor
 	// Update queue matrix
 	for (int flr = 0; flr < N_FLOORS; flr++) {
 		if ( elev_get_button_signal(BUTTON_COMMAND, flr) ) {
 			// dir = (down = -1, stop = 0, up = 1)
-			/*int dir = ((i + 1) - cfloor) == 0 ? 0 : (abs((i + 1) - cfloor) / ((i + 1) - cfloor));
+			int dir = ((i + 1) - cfloor) == 0 ? 0 : (abs((i + 1) - cfloor) / ((i + 1) - cfloor));
 			if (dir == -1) queue[0][i] = 1;
-			else if (dir == 1) queue[1][i] = 1;*/
+			else if (dir == 1) queue[1][i] = 1;*
 			queue[2][flr] = 1;
 		}
-	}
+	} */
 }
 
 void removeFromOrder(int f) {
@@ -43,5 +43,14 @@ void removeFromOrder(int f) {
 	}
 	for (int i = 0; i < 3; i++) {
 		queue[i][flr] = 0;
+	}
+}
+
+void resetQueueAndLights() {
+	for (int flr = 0; flr < N_FLOORS; flr++) {
+		for (int butn = 0; butn < 3; butn++) {
+			queue[butn][flr] = 0;
+			elev_set_button_lamp(butn,flr,0);
+		}
 	}
 }
