@@ -89,7 +89,7 @@ int determineDirection() {
           }
           //if elevator is moving down to where a BUTTON_CALL_UP has been pressed
           if (queue[BUTTON_CALL_UP][cfloor] == 1 && !isMoreDownOrders){
-              lastDirection = DIRN_UP;
+              lastDirection = DIRN_STOP;
               returnState = WAIT;
           } else if (isMoreUpOrders) {
             lastDirection = DIRN_DOWN;
@@ -127,7 +127,7 @@ int determineDirection() {
               }
             //if elevator is moving up to where a BUTTON_CALL_DOWN has been pressed
             if (queue[BUTTON_CALL_DOWN][cfloor] == 1 && !isMoreUpOrders){
-                lastDirection = DIRN_DOWN;
+                lastDirection = DIRN_STOP;
                 returnState = WAIT;
             } else if (isMoreDownOrders) {
                 lastDirection = DIRN_UP;

@@ -58,7 +58,7 @@ int elev_init(void) {
 }
 
 void elev_set_motor_direction(elev_motor_direction_t dirn) {
-
+/*
     if (dirn == 0){
         io_write_analog(MOTOR, 0);
     } else if (dirn > 0) {
@@ -67,8 +67,8 @@ void elev_set_motor_direction(elev_motor_direction_t dirn) {
     } else if (dirn < 0) {
         io_set_bit(MOTORDIR);
         io_write_analog(MOTOR, 2800);
-    }
-    //io_write_analog(MOTOR, 0);
+    } */
+    io_write_analog(MOTOR, 0);
 }
 
 void elev_set_door_open_lamp(int value) {
