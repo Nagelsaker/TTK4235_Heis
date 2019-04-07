@@ -59,13 +59,9 @@ int main() {
                     elev_set_motor_direction(DIRN_STOP);
                     elev_state = IDLE;
                 }
-
                 break;
 
             case IDLE:
-                //finnes ordre?
-                //gjør noe med det
-                //bytt state
         				elev_state = checkForOrders();
         				break;
 
