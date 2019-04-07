@@ -42,7 +42,7 @@ int main() {
         }
 
 
-        floorIndicatorLights();
+        updateFloorIndicatorLights();
 
 
         //set state to emergencyStop if stop button is pressed
@@ -50,11 +50,9 @@ int main() {
             elev_set_stop_lamp(1); //L6
             elev_state = EM_STOP;
         }
-        //printf("elev_state = %d\n", elev_state);
         switch (elev_state){
             case INIT:
                 //moves elevator to 1st floor and switches to IDLE state
-                //printf("INIT\n");
                 resetQueueAndLights();
                 elev_set_motor_direction(DIRN_DOWN);
                 if (getCurrentFloor() == 0) {
@@ -65,22 +63,19 @@ int main() {
                 break;
 
             case IDLE:
-              //printf("IDLE\n");
-              //finnes ordre?
-              //gjør noe med det
-              //bytt state
-      				elev_state = checkForOrders();
-      				break;
+                //finnes ordre?
+                //gjør noe med det
+                //bytt state
+        				elev_state = checkForOrders();
+        				break;
 
             case MOVE:
-                //printf("MOVE\n");
                 //elev_motor_direction_t(?);      //set direction from queue
                 //handle orders while moving
                 elev_state = determineDirection();
-				    break;
+				        break;
 
             case WAIT:
-                //printf("WAIT\n");
                 elev_set_motor_direction(DIRN_STOP);    //stops elevator
         				elev_set_door_open_lamp(1);   //opens doors for 3 seconds
         				if (!hasTimerStarted()) {
@@ -91,7 +86,7 @@ int main() {
 		            break;
 
             case EM_STOP:
-                //printf("EM_STOP\n");
+                lastDirection = DIRN_STOP;
                 emergencyStop(); //lights stop button, stops elevator, opens doors if on floor.
                 resetQueueAndLights();
                 if (elev_get_stop_signal() != 1) {

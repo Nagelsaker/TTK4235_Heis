@@ -28,24 +28,23 @@ void emergencyStop(){
   }
 
 
-  int floorIndicatorLights(){
+  int updateFloorIndicatorLights(){
         //lastFloor has random value the first time this function is called
-        if (lastFloor < -1 || lastFloor > 3){
+        if (lastFloor < 0 || lastFloor > 3){
             return 0;
+        } else {
+          if ((getCurrentFloor() != -1) && (getCurrentFloor() != lastFloor)){
+              lastFloor = getCurrentFloor();
+              elev_set_floor_indicator(lastFloor);
+              return 0;
+          }
+          if (getCurrentFloor() == -1){
+              elev_set_floor_indicator(lastFloor);
+              return 0;
+          }
+          return 0;
         }
-        if ((getCurrentFloor() != -1) && (getCurrentFloor() != lastFloor)){
-            lastFloor = getCurrentFloor();
-            elev_set_floor_indicator(lastFloor);
-            return 0;
-        }
-        if (getCurrentFloor() == -1 && (lastFloor < 4 && lastFloor > -2)){
-            elev_set_floor_indicator(lastFloor);
-            return 0;
-        }
-        return 0;
     }
-
-
 
 
 
@@ -65,7 +64,7 @@ int determineDirection() {
           }
         }
       }
-    }
+    } // end of double for loop
     switch(lastDirection) {
         case DIRN_STOP:
             // Check orders in both directions
@@ -78,6 +77,13 @@ int determineDirection() {
                   if (queue[butn][flr] == 1) {
                     if (cfloor == flr) {
                       returnState = WAIT;
+                    } else if (cfloor == -1) { // After an EM_STOP
+
+                      if (lastFloor < flr) { elev_set_motor_direction(DIRN_UP); }
+                      else if (lastFloor > flr) { elev_set_motor_direction(DIRN_DOWN); }
+                      else if (lastFloor == flr) { elev_set_motor_direction(DIRN_DOWN); }
+                      returnState = MOVE;
+
                     } else if ( cfloor < flr) {
                       elev_set_motor_direction(DIRN_UP);
                       lastDirection = DIRN_UP;
@@ -89,7 +95,7 @@ int determineDirection() {
                     }
                   }
                 }
-              }
+              } // end of double for loop
             return returnState;
             break;
 
@@ -99,20 +105,23 @@ int determineDirection() {
           // Check for down- and command-orders at current floor, and determine next state
           for (int butn = 1; butn < 3; butn++) {
             if ((queue[butn][cfloor] == 1) && isMoreDownOrders) {
+              lastDirection = DIRN_DOWN;
               returnState = WAIT;
+              return returnState;
             } else if (queue[butn][cfloor] == 1) {
               lastDirection = DIRN_STOP;
               returnState = WAIT;
+              return returnState;
             } else if (isMoreDownOrders) {
               lastDirection = DIRN_DOWN;
               returnState = MOVE;
             }
-          }
+          } // end of for loop
           //if elevator is moving down to where a BUTTON_CALL_UP has been pressed
           if (queue[BUTTON_CALL_UP][cfloor] == 1 && !isMoreDownOrders){
               lastDirection = DIRN_STOP;
               returnState = WAIT;
-          } else if (isMoreUpOrders) {
+          } else if (isMoreUpOrders && !isMoreDownOrders) {
             lastDirection = DIRN_DOWN;
             returnState = MOVE;
           }
@@ -138,9 +147,11 @@ int determineDirection() {
                 if ((queue[butn][cfloor] == 1) && isMoreUpOrders) {
                   lastDirection = DIRN_UP;
                   returnState = WAIT;
+                  return returnState;
                 } else if (queue[butn][cfloor] == 1) {
                   lastDirection = DIRN_STOP;
                   returnState = WAIT;
+                  return returnState;
                 } else if (isMoreUpOrders) {
                   lastDirection = DIRN_UP;
                   returnState = MOVE;
@@ -150,7 +161,7 @@ int determineDirection() {
             if (queue[BUTTON_CALL_DOWN][cfloor] == 1 && !isMoreUpOrders){
                 lastDirection = DIRN_STOP;
                 returnState = WAIT;
-            } else if (isMoreDownOrders) {
+            } else if (isMoreDownOrders && !isMoreUpOrders) {
                 lastDirection = DIRN_UP;
                 returnState = MOVE;
             }

@@ -58,7 +58,7 @@ int elev_init(void) {
 }
 
 void elev_set_motor_direction(elev_motor_direction_t dirn) {
-  /*
+
     if (dirn == 0){
         io_write_analog(MOTOR, 0);
     } else if (dirn > 0) {
@@ -67,8 +67,8 @@ void elev_set_motor_direction(elev_motor_direction_t dirn) {
     } else if (dirn < 0) {
         io_set_bit(MOTORDIR);
         io_write_analog(MOTOR, 2800);
-    } */
-    io_write_analog(MOTOR, 0);
+    }
+    //io_write_analog(MOTOR, 0);
 }
 
 void elev_set_door_open_lamp(int value) {
@@ -107,8 +107,10 @@ int elev_get_floor_sensor_signal(void) {
 }
 
 void elev_set_floor_indicator(int floor) {
-    assert(floor >= 0);
-    assert(floor < N_FLOORS);
+    //assert(floor >= 0);
+    //assert(floor < N_FLOORS);
+    if (!(floor >= 0)) return;
+    if (!(floor < N_FLOORS)) return;
     if (floor < 0 || floor > N_FLOORS) {
         printf("Floor out of bounds");
     }

@@ -15,7 +15,7 @@ int lastDirection;
 
 int lastFloor;
 
-int floorIndicatorLights();
+int updateFloorIndicatorLights();
 
 int getCurrentFloor();
 
