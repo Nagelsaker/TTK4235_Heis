@@ -17,6 +17,7 @@ void updateOrderQueue() {
 			// j = (BUTTON_CALL_UP = 0, BUTTON_CALL_DOWN = 1)
 			if (elev_get_button_signal(butn, flr) == 1) {
 				queue[butn][flr] = 1;
+				elev_set_button_lamp(butn,flr,1);
 			}
 		}
 	}
@@ -41,8 +42,9 @@ void removeFromOrder(int f) {
 		printf("ERROR removing floor from order!");
 		return;
 	}
-	for (int i = 0; i < 3; i++) {
-		queue[i][flr] = 0;
+	for (int butn = 0; butn < 3; butn++) {
+		queue[butn][flr] = 0;
+		elev_set_button_lamp(butn,flr,0);
 	}
 }
 

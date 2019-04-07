@@ -28,6 +28,27 @@ void emergencyStop(){
   }
 
 
+  int floorIndicatorLights(){
+        //lastFloor has random value the first time this function is called
+        if (lastFloor < -1 || lastFloor > 3){
+            return 0;
+        }
+        if ((getCurrentFloor() != -1) && (getCurrentFloor() != lastFloor)){
+            lastFloor = getCurrentFloor();
+            elev_set_floor_indicator(lastFloor);
+            return 0;
+        }
+        if (getCurrentFloor() == -1 && (lastFloor < 4 && lastFloor > -2)){
+            elev_set_floor_indicator(lastFloor);
+            return 0;
+        }
+        return 0;
+    }
+
+
+
+
+
 int determineDirection() {
     state returnState = EM_STOP;
     int cfloor = getCurrentFloor();

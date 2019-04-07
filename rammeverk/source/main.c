@@ -41,6 +41,10 @@ int main() {
             stopTimer();
         }
 
+
+        floorIndicatorLights();
+
+
         //set state to emergencyStop if stop button is pressed
         if (elev_get_stop_signal()){
             elev_set_stop_lamp(1); //L6

@@ -13,6 +13,10 @@ void emergencyStop();
 
 int lastDirection;
 
+int lastFloor;
+
+int floorIndicatorLights();
+
 int getCurrentFloor();
 
 int determineDirection();
