@@ -9,15 +9,19 @@ typedef enum state {
     EM_STOP = 4
 } state;
 
-void emergencyStop();
+struct t_floor {
+    int last;
+    int next;
+};
 
+struct t_floor t_floor;
 int lastDirection;
 
-int lastFloor;
-
+enum state stopState();
+enum state downState();
+enum state upState();
 int updateFloorIndicatorLights();
-
 int getCurrentFloor();
-
 int determineDirection();
+void emergencyStop();
 #endif

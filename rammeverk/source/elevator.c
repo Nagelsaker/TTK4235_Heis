@@ -1,4 +1,5 @@
 #include "elev.h"
+#include "elevator.h"
 #include "queue.h"
 #include "timer.h"
 
@@ -29,18 +30,23 @@ void emergencyStop(){
 
 
   int updateFloorIndicatorLights(){
-        //lastFloor has random value the first time this function is called
-        if (lastFloor < 0 || lastFloor > 3){
+        //t_floor.last has random value the first time this function is called
+        if (t_floor.last < 0 || t_floor.last > 3){
             return 0;
         } else {
-          if ((getCurrentFloor() != -1) && (getCurrentFloor() != lastFloor)){
-              lastFloor = getCurrentFloor();
-              elev_set_floor_indicator(lastFloor);
-              return 0;
+          if ((getCurrentFloor() != -1) && (getCurrentFloor() != t_floor.last)){
+              t_floor.last = getCurrentFloor();
+              elev_set_floor_indicator(t_floor.last);
+          } else if (getCurrentFloor() == -1){
+              elev_set_floor_indicator(t_floor.last);
           }
-          if (getCurrentFloor() == -1){
-              elev_set_floor_indicator(lastFloor);
-              return 0;
+
+          if (lastDirection != DIRN_STOP) {
+              if (!(t_floor.last == 3 && lastDirection == DIRN_UP) && !(t_floor.last == 0 && lastDirection == DIRN_DOWN)) {
+                  t_floor.next = t_floor.last + lastDirection;
+              } else {
+                  t_floor.next = t_floor.last;
+              }
           }
           return 0;
         }
@@ -77,13 +83,29 @@ int determineDirection() {
                   if (queue[butn][flr] == 1) {
                     if (cfloor == flr) {
                       returnState = WAIT;
-                    } else if (cfloor == -1) { // After an EM_STOP
-
-                      if (lastFloor < flr) { elev_set_motor_direction(DIRN_UP); }
-                      else if (lastFloor > flr) { elev_set_motor_direction(DIRN_DOWN); }
-                      else if (lastFloor == flr) { elev_set_motor_direction(DIRN_DOWN); }
+                    } else if (cfloor == -1) {
+                    // After an EM_STOP, the following state will be triggered
+                      if (t_floor.next > t_floor.last) {
+                          if (t_floor.next > flr) {
+                              lastDirection = DIRN_DOWN;
+                          } else if (t_floor.next == flr) {
+                              lastDirection = DIRN_UP;
+                          }
+                      } else if (t_floor.next < t_floor.last) {
+                          if (t_floor.next < flr) {
+                              lastDirection = DIRN_UP;
+                          } else if (t_floor.next == flr) {
+                              lastDirection = DIRN_DOWN;
+                          }
+                      } else if (t_floor.next == t_floor.last){
+                          if (t_floor.next < flr) {
+                              lastDirection = DIRN_UP;
+                          } else if (t_floor.next > flr) {
+                              lastDirection = DIRN_DOWN;
+                          }
+                      }
                       returnState = MOVE;
-
+                    // End of EM_STOP
                     } else if ( cfloor < flr) {
                       elev_set_motor_direction(DIRN_UP);
                       lastDirection = DIRN_UP;
@@ -182,3 +204,10 @@ int determineDirection() {
     printf("ERROR while moving\n");
     return EM_STOP;
 }
+
+
+enum state stopState();
+
+enum state downState();
+
+enum state upState();

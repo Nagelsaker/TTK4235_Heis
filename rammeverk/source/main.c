@@ -24,23 +24,14 @@ int main() {
 
     while (1) {
 
-        // Change direction when we reach top/bottom floor
-        /*
-        if (elev_get_floor_sensor_signal() == N_FLOORS - 1) {
-            elev_set_motor_direction(DIRN_DOWN);
-        } else if (elev_get_floor_sensor_signal() == 0) {
-            elev_set_motor_direction(DIRN_UP);
-        } */
-
         //check buttons, floor sensor, check timer
-    		updateOrderQueue();
-    		if (!hasTimerPassed3s() && !elev_get_stop_signal()) {
-            elev_state = WAIT;
+		updateOrderQueue();
+		if (!hasTimerPassed3s() && !elev_get_stop_signal()) {
+        elev_state = WAIT;
         } else {
             elev_set_door_open_lamp(0);
             stopTimer();
         }
-
 
         updateFloorIndicatorLights();
 
@@ -62,32 +53,33 @@ int main() {
                 break;
 
             case IDLE:
-        				elev_state = checkForOrders();
-        				break;
+                elev_state = checkForOrders();
+                break;
 
             case MOVE:
-                //elev_motor_direction_t(?);      //set direction from queue
+                //set direction from queue
                 //handle orders while moving
                 elev_state = determineDirection();
-				        break;
+                break;
 
             case WAIT:
                 elev_set_motor_direction(DIRN_STOP);    //stops elevator
-        				elev_set_door_open_lamp(1);   //opens doors for 3 seconds
-        				if (!hasTimerStarted()) {
-                   startTimer();
-                 }
+                elev_set_door_open_lamp(1);   //opens doors for 3 seconds
+                if (!hasTimerStarted()) {
+                    startTimer();
+                }
                 removeFromOrder(getCurrentFloor());
                 elev_state = IDLE;
-		            break;
+                break;
 
             case EM_STOP:
-                lastDirection = DIRN_STOP;
+                // lastDirection = DIRN_STOP;
                 emergencyStop(); //lights stop button, stops elevator, opens doors if on floor.
                 resetQueueAndLights();
                 if (elev_get_stop_signal() != 1) {
                     elev_set_stop_lamp(0);  //L6
                     elev_state = IDLE;
+                    lastDirection = DIRN_STOP;
                 }
                 break;
 
