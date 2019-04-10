@@ -1,0 +1,61 @@
+\hypertarget{queue_8h}{}\section{source/queue.h File Reference}
+\label{queue_8h}\index{source/queue.\+h@{source/queue.\+h}}
+
+
+Description of Queue.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}elev.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}elevator.\+h\char`\"{}}\\*
+Include dependency graph for queue.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{queue_8h_aa59f5b28c4e06132a931074ca3cd8127}{check\+For\+Orders} ()
+\begin{DoxyCompactList}\small\item\em Iterates {\ttfamily queue} to check for orders. \end{DoxyCompactList}\item 
+void \hyperlink{queue_8h_a6aa26e41157a62fc8dabd61150b8058c}{update\+Order\+Queue} ()\hypertarget{queue_8h_a6aa26e41157a62fc8dabd61150b8058c}{}\label{queue_8h_a6aa26e41157a62fc8dabd61150b8058c}
+
+\begin{DoxyCompactList}\small\item\em Updates the matrix {\ttfamily queue} if a button is pressed. \end{DoxyCompactList}\item 
+void \hyperlink{queue_8h_adc28a537d168fd2ba8a156ac23fd646f}{reset\+Queue\+And\+Lights} ()\hypertarget{queue_8h_adc28a537d168fd2ba8a156ac23fd646f}{}\label{queue_8h_adc28a537d168fd2ba8a156ac23fd646f}
+
+\begin{DoxyCompactList}\small\item\em Sets all values in {\ttfamily queue} to 0, and turns off all the lights. \end{DoxyCompactList}\item 
+void \hyperlink{queue_8h_a61a5b63868db336d935c22a76fa3e1b6}{remove\+From\+Order} (int floor)\hypertarget{queue_8h_a61a5b63868db336d935c22a76fa3e1b6}{}\label{queue_8h_a61a5b63868db336d935c22a76fa3e1b6}
+
+\begin{DoxyCompactList}\small\item\em Sets all values for a specific floor to 0 in {\ttfamily queue}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{queue_8h_a85525b4774431ecb268f29677b31b7ef}{queue} \mbox{[}3\mbox{]}\mbox{[}N\+\_\+\+F\+L\+O\+O\+RS\mbox{]}\hypertarget{queue_8h_a85525b4774431ecb268f29677b31b7ef}{}\label{queue_8h_a85525b4774431ecb268f29677b31b7ef}
+
+\begin{DoxyCompactList}\small\item\em Matrix containing orders. 0 is standard value, 1 represent an order. $\vert$ 1 $\vert$ 2 $\vert$ 3 $\vert$ 4 $\vert$ UP $\vert$ x $\vert$ x $\vert$ x $\vert$ x $\vert$ Down $\vert$ x $\vert$ x $\vert$ x $\vert$ x $\vert$ Elev $\vert$ x $\vert$ x $\vert$ x $\vert$ x $\vert$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Description of Queue. 
+
+
+
+\subsection{Function Documentation}
+\index{queue.\+h@{queue.\+h}!check\+For\+Orders@{check\+For\+Orders}}
+\index{check\+For\+Orders@{check\+For\+Orders}!queue.\+h@{queue.\+h}}
+\subsubsection[{\texorpdfstring{check\+For\+Orders()}{checkForOrders()}}]{\setlength{\rightskip}{0pt plus 5cm}int check\+For\+Orders (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{queue_8h_aa59f5b28c4e06132a931074ca3cd8127}{}\label{queue_8h_aa59f5b28c4e06132a931074ca3cd8127}
+
+
+Iterates {\ttfamily queue} to check for orders. 
+
+\begin{DoxyReturn}{Returns}
+0 when queue is empty, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 3 of file queue.\+c.
+

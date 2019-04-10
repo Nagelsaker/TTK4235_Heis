@@ -9,7 +9,7 @@ int checkForOrders() {
 	return IDLE;
 }
 
-// Check buttons and floor sensors.
+// Check buttons sensors.
 void updateOrderQueue() {
 	// Check floor panel
 	for (int flr = 0; flr < N_FLOORS; flr++) {

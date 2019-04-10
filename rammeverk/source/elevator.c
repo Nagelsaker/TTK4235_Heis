@@ -3,21 +3,24 @@
 #include "queue.h"
 #include "timer.h"
 
-
-
-void emergencyStop(){
-
+state emergencyStop(){
+    state returnState = EM_STOP;
     elev_set_motor_direction(DIRN_STOP);          //stop elevator
 
     if ( elev_get_floor_sensor_signal() != -1 ){    //open doors if on a floor
         elev_set_door_open_lamp(1);
         startTimer();
-        if (hasTimerPassed3s()){
+        if (hasTimerPassedXs(3)){
           elev_set_door_open_lamp(0);
         }
     }
-
-    //reset queue
+    resetQueueAndLights();
+    if (elev_get_stop_signal() != 1) {
+        elev_set_stop_lamp(0);  //L6
+        returnState = IDLE;
+        lastDirection = DIRN_STOP;
+    }
+    return returnState;
 }
 
 
@@ -29,32 +32,40 @@ void emergencyStop(){
   }
 
 
-  int updateFloorIndicatorLights(){
+  void updateFloorIndicatorLights(){
         //t_floor.last has random value the first time this function is called
-        if (t_floor.last < 0 || t_floor.last > 3){
-            return 0;
-        } else {
-          if ((getCurrentFloor() != -1) && (getCurrentFloor() != t_floor.last)){
-              t_floor.last = getCurrentFloor();
+        int cfloor = getCurrentFloor();
+        if (!(t_floor.last < -1 || t_floor.last > 3)) {
+          if ((cfloor != -1) && (cfloor != t_floor.last)){
+              t_floor.last = cfloor;
               elev_set_floor_indicator(t_floor.last);
-          } else if (getCurrentFloor() == -1){
+          } else if (cfloor == -1){
               elev_set_floor_indicator(t_floor.last);
           }
 
           if (lastDirection != DIRN_STOP) {
               if (!(t_floor.last == 3 && lastDirection == DIRN_UP) && !(t_floor.last == 0 && lastDirection == DIRN_DOWN)) {
+                if ((t_floor.last < t_floor.next && lastDirection == DIRN_DOWN)
+                  || (t_floor.last > t_floor.next && lastDirection == DIRN_UP)) {
+                  int temp = t_floor.last;
+                  t_floor.last = t_floor.next;
+                  t_floor.next = temp;
+                } else {
                   t_floor.next = t_floor.last + lastDirection;
+                }
               } else {
                   t_floor.next = t_floor.last;
               }
           }
-          return 0;
+
+          return;
         }
+        return;
     }
 
 
 
-int determineDirection() {
+state determineDirection() {
     state returnState = EM_STOP;
     int cfloor = getCurrentFloor();
     int isMoreUpOrders = 0;
@@ -88,13 +99,13 @@ int determineDirection() {
                       if (t_floor.next > t_floor.last) {
                           if (t_floor.next > flr) {
                               lastDirection = DIRN_DOWN;
-                          } else if (t_floor.next == flr) {
+                          } else if (t_floor.next <= flr) {
                               lastDirection = DIRN_UP;
                           }
                       } else if (t_floor.next < t_floor.last) {
                           if (t_floor.next < flr) {
                               lastDirection = DIRN_UP;
-                          } else if (t_floor.next == flr) {
+                          } else if (t_floor.next >= flr) {
                               lastDirection = DIRN_DOWN;
                           }
                       } else if (t_floor.next == t_floor.last){
@@ -102,6 +113,10 @@ int determineDirection() {
                               lastDirection = DIRN_UP;
                           } else if (t_floor.next > flr) {
                               lastDirection = DIRN_DOWN;
+                          } else if (t_floor.next == flr && flr == 0) {
+                            lastDirection = DIRN_DOWN;
+                          } else if (t_floor.next == flr && flr == 3) {
+                            lastDirection = DIRN_UP;
                           }
                       }
                       returnState = MOVE;
@@ -118,7 +133,6 @@ int determineDirection() {
                   }
                 }
               } // end of double for loop
-            return returnState;
             break;
 
         case DIRN_DOWN:
@@ -158,7 +172,6 @@ int determineDirection() {
         if (returnState == MOVE) {
           elev_set_motor_direction(DIRN_DOWN);
         }
-        return returnState;
         break;
 
         case DIRN_UP:
@@ -198,16 +211,12 @@ int determineDirection() {
           if (returnState == MOVE) {
             elev_set_motor_direction(DIRN_UP);
           }
-          return returnState;
           break;
     }
-    printf("ERROR while moving\n");
-    return EM_STOP;
+    if (returnState != EM_STOP) {
+        return returnState;
+    } else {
+        printf("ERROR while moving\n");
+        return EM_STOP;
+  }
 }
-
-
-enum state stopState();
-
-enum state downState();
-
-enum state upState();

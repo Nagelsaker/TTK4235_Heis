@@ -3,13 +3,6 @@
 //clock_t end;
 time_t timer = 0;
 
-int hasTimerPassed3s() {
-	time_t currentTime = time(NULL);
-	long int elapsedTime = (int) (currentTime - timer);
-	if (elapsedTime < 3) {
-		return 0;
-	} else return 1;
-}
 
 void startTimer() {
 
@@ -25,4 +18,12 @@ int hasTimerStarted() {
 	if (timer != 0) {
 		return 1;
 	} else return 0;
+}
+
+int hasTimerPassedXs(int x) {
+	time_t currentTime = time(NULL);
+	long int elapsedTime = (int) (currentTime - timer);
+	if (elapsedTime < x) {
+		return 0;
+	} else return 1;
 }
