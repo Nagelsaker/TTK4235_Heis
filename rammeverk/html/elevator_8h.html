@@ -110,17 +110,19 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structt__floor.html">t_floor</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains the last floor and the next floor the elevator will visit.  <a href="structt__floor.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a9f34354b149588b399cf9448e20069be"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9f34354b149588b399cf9448e20069be"></a>
-typedef enum state&#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
+typedef enum <a class="el" href="elevator_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#a9f34354b149588b399cf9448e20069be">state</a></td></tr>
+<tr class="memdesc:a9f34354b149588b399cf9448e20069be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all the states the FSM can have. <br /></td></tr>
 <tr class="separator:a9f34354b149588b399cf9448e20069be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:adc6e5733fc3c22f0a7b2914188c49c90"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc6e5733fc3c22f0a7b2914188c49c90"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>state</b> { <br />
+<tr class="memitem:adc6e5733fc3c22f0a7b2914188c49c90"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc6e5733fc3c22f0a7b2914188c49c90"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a> { <br />
 &#160;&#160;<b>INIT</b> = 0, 
 <b>IDLE</b> = 1, 
 <b>MOVE</b> = 2, 
@@ -128,12 +130,13 @@ Enumerations</h2></td></tr>
 <br />
 &#160;&#160;<b>EM_STOP</b> = 4
 <br />
- }</td></tr>
+ }<tr class="memdesc:adc6e5733fc3c22f0a7b2914188c49c90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all the states the FSM can have. <br /></td></tr>
+</td></tr>
 <tr class="separator:adc6e5733fc3c22f0a7b2914188c49c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8aa67ee49a1d275aa51b0613b799c319"><td class="memItemLeft" align="right" valign="top">state&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#a8aa67ee49a1d275aa51b0613b799c319">emergencyStop</a> ()</td></tr>
+<tr class="memitem:a8aa67ee49a1d275aa51b0613b799c319"><td class="memItemLeft" align="right" valign="top"><a class="el" href="elevator_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#a8aa67ee49a1d275aa51b0613b799c319">emergencyStop</a> ()</td></tr>
 <tr class="memdesc:a8aa67ee49a1d275aa51b0613b799c319"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the elevator for as long as STOP button is pressed, and an additional 3 seconds after release.  <a href="#a8aa67ee49a1d275aa51b0613b799c319">More...</a><br /></td></tr>
 <tr class="separator:a8aa67ee49a1d275aa51b0613b799c319"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0165a5bcb8596e257d40f2691fd15fef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#a0165a5bcb8596e257d40f2691fd15fef">getCurrentFloor</a> ()</td></tr>
@@ -143,15 +146,23 @@ Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#a421880cfef13dce25fd9ea88d0439a9d">updateFloorIndicatorLights</a> ()</td></tr>
 <tr class="memdesc:a421880cfef13dce25fd9ea88d0439a9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates floor indicator lights, as well as t_floor.last and t_floor.next. <br /></td></tr>
 <tr class="separator:a421880cfef13dce25fd9ea88d0439a9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bf2d976c82d96e567bc0dc2d00878b5"><td class="memItemLeft" align="right" valign="top">state&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#a4bf2d976c82d96e567bc0dc2d00878b5">determineDirection</a> ()</td></tr>
+<tr class="memitem:a4bf2d976c82d96e567bc0dc2d00878b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="elevator_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#a4bf2d976c82d96e567bc0dc2d00878b5">determineDirection</a> ()</td></tr>
 <tr class="memdesc:a4bf2d976c82d96e567bc0dc2d00878b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines which direction the elevator needs to travel.  <a href="#a4bf2d976c82d96e567bc0dc2d00878b5">More...</a><br /></td></tr>
 <tr class="separator:a4bf2d976c82d96e567bc0dc2d00878b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed195dfd426f90b620939eb782f0e319"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed195dfd426f90b620939eb782f0e319"></a>
+<a class="el" href="elevator_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td><td class="memItemRight" valign="bottom"><b>stopState</b> ()</td></tr>
+<tr class="separator:aed195dfd426f90b620939eb782f0e319"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f756b3f5513bbca610783d3a5d7ca54"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4f756b3f5513bbca610783d3a5d7ca54"></a>
+<a class="el" href="elevator_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td><td class="memItemRight" valign="bottom"><b>downState</b> ()</td></tr>
+<tr class="separator:a4f756b3f5513bbca610783d3a5d7ca54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae967a38ac47c0e40860efc8598f8f7bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae967a38ac47c0e40860efc8598f8f7bd"></a>
+<a class="el" href="elevator_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td><td class="memItemRight" valign="bottom"><b>upState</b> ()</td></tr>
+<tr class="separator:ae967a38ac47c0e40860efc8598f8f7bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:aa11f0ded82cc2cb209e4489981d766e6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa11f0ded82cc2cb209e4489981d766e6"></a>
-struct <a class="el" href="structt__floor.html">t_floor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#aa11f0ded82cc2cb209e4489981d766e6">t_floor</a></td></tr>
-<tr class="memdesc:aa11f0ded82cc2cb209e4489981d766e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains the last floor and the next floor the elevator will visit. <br /></td></tr>
+struct <a class="el" href="structt__floor.html">t_floor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>t_floor</b></td></tr>
 <tr class="separator:aa11f0ded82cc2cb209e4489981d766e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2055f8d01274f9ad120dda82da5c612e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2055f8d01274f9ad120dda82da5c612e"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>lastDirection</b></td></tr>
@@ -167,7 +178,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>lastDirection</b></td>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">state determineDirection </td>
+          <td class="memname"><a class="el" href="elevator_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a> determineDirection </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -188,7 +199,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>lastDirection</b></td>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">state emergencyStop </td>
+          <td class="memname"><a class="el" href="elevator_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a> emergencyStop </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>

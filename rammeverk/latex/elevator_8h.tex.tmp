@@ -11,17 +11,17 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 struct \hyperlink{structt__floor}{t\+\_\+floor}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Contains the last floor and the next floor the elevator will visit. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef enum state {\bfseries state}\hypertarget{elevator_8h_a9f34354b149588b399cf9448e20069be}{}\label{elevator_8h_a9f34354b149588b399cf9448e20069be}
+typedef enum \hyperlink{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} \hyperlink{elevator_8h_a9f34354b149588b399cf9448e20069be}{state}\hypertarget{elevator_8h_a9f34354b149588b399cf9448e20069be}{}\label{elevator_8h_a9f34354b149588b399cf9448e20069be}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Contains all the states the F\+SM can have. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum {\bfseries state} \{ \\*
+enum \hyperlink{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} \{ \\*
 {\bfseries I\+N\+IT} = 0, 
 {\bfseries I\+D\+LE} = 1, 
 {\bfseries M\+O\+VE} = 2, 
@@ -29,26 +29,35 @@ enum {\bfseries state} \{ \\*
 \\*
 {\bfseries E\+M\+\_\+\+S\+T\+OP} = 4
  \}\hypertarget{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}{}\label{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}
-
+\begin{DoxyCompactList}\small\item\em Contains all the states the F\+SM can have. \end{DoxyCompactList}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-state \hyperlink{elevator_8h_a8aa67ee49a1d275aa51b0613b799c319}{emergency\+Stop} ()
+\hyperlink{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} \hyperlink{elevator_8h_a8aa67ee49a1d275aa51b0613b799c319}{emergency\+Stop} ()
 \begin{DoxyCompactList}\small\item\em Stops the elevator for as long as S\+T\+OP button is pressed, and an additional 3 seconds after release. \end{DoxyCompactList}\item 
 int \hyperlink{elevator_8h_a0165a5bcb8596e257d40f2691fd15fef}{get\+Current\+Floor} ()
 \begin{DoxyCompactList}\small\item\em Returns the elevators current floor. \end{DoxyCompactList}\item 
 void \hyperlink{elevator_8h_a421880cfef13dce25fd9ea88d0439a9d}{update\+Floor\+Indicator\+Lights} ()\hypertarget{elevator_8h_a421880cfef13dce25fd9ea88d0439a9d}{}\label{elevator_8h_a421880cfef13dce25fd9ea88d0439a9d}
 
 \begin{DoxyCompactList}\small\item\em Updates floor indicator lights, as well as t\+\_\+floor.\+last and t\+\_\+floor.\+next. \end{DoxyCompactList}\item 
-state \hyperlink{elevator_8h_a4bf2d976c82d96e567bc0dc2d00878b5}{determine\+Direction} ()
-\begin{DoxyCompactList}\small\item\em Determines which direction the elevator needs to travel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\hyperlink{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} \hyperlink{elevator_8h_a4bf2d976c82d96e567bc0dc2d00878b5}{determine\+Direction} ()
+\begin{DoxyCompactList}\small\item\em Determines which direction the elevator needs to travel. \end{DoxyCompactList}\item 
+\hyperlink{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} {\bfseries stop\+State} ()\hypertarget{elevator_8h_aed195dfd426f90b620939eb782f0e319}{}\label{elevator_8h_aed195dfd426f90b620939eb782f0e319}
+
+\item 
+\hyperlink{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} {\bfseries down\+State} ()\hypertarget{elevator_8h_a4f756b3f5513bbca610783d3a5d7ca54}{}\label{elevator_8h_a4f756b3f5513bbca610783d3a5d7ca54}
+
+\item 
+\hyperlink{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} {\bfseries up\+State} ()\hypertarget{elevator_8h_ae967a38ac47c0e40860efc8598f8f7bd}{}\label{elevator_8h_ae967a38ac47c0e40860efc8598f8f7bd}
+
+\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structt__floor}{t\+\_\+floor} \hyperlink{elevator_8h_aa11f0ded82cc2cb209e4489981d766e6}{t\+\_\+floor}\hypertarget{elevator_8h_aa11f0ded82cc2cb209e4489981d766e6}{}\label{elevator_8h_aa11f0ded82cc2cb209e4489981d766e6}
+struct \hyperlink{structt__floor}{t\+\_\+floor} {\bfseries t\+\_\+floor}\hypertarget{elevator_8h_aa11f0ded82cc2cb209e4489981d766e6}{}\label{elevator_8h_aa11f0ded82cc2cb209e4489981d766e6}
 
-\begin{DoxyCompactList}\small\item\em Contains the last floor and the next floor the elevator will visit. \end{DoxyCompactList}\item 
+\item 
 int {\bfseries last\+Direction}\hypertarget{elevator_8h_a2055f8d01274f9ad120dda82da5c612e}{}\label{elevator_8h_a2055f8d01274f9ad120dda82da5c612e}
 
 \end{DoxyCompactItemize}
@@ -62,7 +71,7 @@ Description of Elevator.
 \subsection{Function Documentation}
 \index{elevator.\+h@{elevator.\+h}!determine\+Direction@{determine\+Direction}}
 \index{determine\+Direction@{determine\+Direction}!elevator.\+h@{elevator.\+h}}
-\subsubsection[{\texorpdfstring{determine\+Direction()}{determineDirection()}}]{\setlength{\rightskip}{0pt plus 5cm}state determine\+Direction (
+\subsubsection[{\texorpdfstring{determine\+Direction()}{determineDirection()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf state} determine\+Direction (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
@@ -83,7 +92,7 @@ Definition at line 68 of file elevator.\+c.
 
 \index{elevator.\+h@{elevator.\+h}!emergency\+Stop@{emergency\+Stop}}
 \index{emergency\+Stop@{emergency\+Stop}!elevator.\+h@{elevator.\+h}}
-\subsubsection[{\texorpdfstring{emergency\+Stop()}{emergencyStop()}}]{\setlength{\rightskip}{0pt plus 5cm}state emergency\+Stop (
+\subsubsection[{\texorpdfstring{emergency\+Stop()}{emergencyStop()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf state} emergency\+Stop (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}

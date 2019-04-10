@@ -61,9 +61,5 @@ void updateFloorIndicatorLights();
 *
 * @warning can also return @c EM_STOP if some unforeseen error occurs.
 */
-state determineDirection();
-
-state stopState();
-state downState();
-state upState();
+state determineDirectionOrWait();
 #endif
