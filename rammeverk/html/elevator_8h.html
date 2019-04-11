@@ -146,18 +146,9 @@ Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#a421880cfef13dce25fd9ea88d0439a9d">updateFloorIndicatorLights</a> ()</td></tr>
 <tr class="memdesc:a421880cfef13dce25fd9ea88d0439a9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates floor indicator lights, as well as t_floor.last and t_floor.next. <br /></td></tr>
 <tr class="separator:a421880cfef13dce25fd9ea88d0439a9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bf2d976c82d96e567bc0dc2d00878b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="elevator_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#a4bf2d976c82d96e567bc0dc2d00878b5">determineDirection</a> ()</td></tr>
-<tr class="memdesc:a4bf2d976c82d96e567bc0dc2d00878b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines which direction the elevator needs to travel.  <a href="#a4bf2d976c82d96e567bc0dc2d00878b5">More...</a><br /></td></tr>
-<tr class="separator:a4bf2d976c82d96e567bc0dc2d00878b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed195dfd426f90b620939eb782f0e319"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed195dfd426f90b620939eb782f0e319"></a>
-<a class="el" href="elevator_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td><td class="memItemRight" valign="bottom"><b>stopState</b> ()</td></tr>
-<tr class="separator:aed195dfd426f90b620939eb782f0e319"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f756b3f5513bbca610783d3a5d7ca54"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4f756b3f5513bbca610783d3a5d7ca54"></a>
-<a class="el" href="elevator_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td><td class="memItemRight" valign="bottom"><b>downState</b> ()</td></tr>
-<tr class="separator:a4f756b3f5513bbca610783d3a5d7ca54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae967a38ac47c0e40860efc8598f8f7bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae967a38ac47c0e40860efc8598f8f7bd"></a>
-<a class="el" href="elevator_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td><td class="memItemRight" valign="bottom"><b>upState</b> ()</td></tr>
-<tr class="separator:ae967a38ac47c0e40860efc8598f8f7bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec166bf6fecbefc027b9549f766b63bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="elevator_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="elevator_8h.html#aec166bf6fecbefc027b9549f766b63bb">determineDirectionOrWait</a> ()</td></tr>
+<tr class="memdesc:aec166bf6fecbefc027b9549f766b63bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines which direction the elevator needs to travel.  <a href="#aec166bf6fecbefc027b9549f766b63bb">More...</a><br /></td></tr>
+<tr class="separator:aec166bf6fecbefc027b9549f766b63bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -173,12 +164,12 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>lastDirection</b></td>
 
 <p>Definition in file <a class="el" href="elevator_8h_source.html">elevator.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a4bf2d976c82d96e567bc0dc2d00878b5"></a>
+<a class="anchor" id="aec166bf6fecbefc027b9549f766b63bb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="elevator_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a> determineDirection </td>
+          <td class="memname"><a class="el" href="elevator_8h.html#adc6e5733fc3c22f0a7b2914188c49c90">state</a> determineDirectionOrWait </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -190,7 +181,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>lastDirection</b></td>
 <dl class="section return"><dt>Returns</dt><dd><code>MOVE</code> when the direction is either <code>DIRN_UP</code> or <code>DIRN_DOWN</code>, return <code>WAIT</code> when direction is <code>DIRN_STOP</code>.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>can also return <code>EM_STOP</code> if some unforeseen error occurs. </dd></dl>
 
-<p>Definition at line <a class="el" href="elevator_8c_source.html#l00068">68</a> of file <a class="el" href="elevator_8c_source.html">elevator.c</a>.</p>
+<p>Definition at line <a class="el" href="elevator_8c_source.html#l00073">73</a> of file <a class="el" href="elevator_8c_source.html">elevator.c</a>.</p>
 
 </div>
 </div>
@@ -211,7 +202,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>lastDirection</b></td>
 <dl class="section return"><dt>Returns</dt><dd><code>EM_STOP</code> if STOP button is pressed down, or if there's less than 3 seconds since the last STOP button push. Else return <code>IDLE</code> </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>When IDLE is returned, lastDirection = DIRN_STOP </dd></dl>
 
-<p>Definition at line <a class="el" href="elevator_8c_source.html#l00006">6</a> of file <a class="el" href="elevator_8c_source.html">elevator.c</a>.</p>
+<p>Definition at line <a class="el" href="elevator_8c_source.html#l00011">11</a> of file <a class="el" href="elevator_8c_source.html">elevator.c</a>.</p>
 
 </div>
 </div>
@@ -231,7 +222,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>lastDirection</b></td>
 <p>Returns the elevators current floor. </p>
 <dl class="section return"><dt>Returns</dt><dd>-1 when not at any floor, otherwise return values in range [0, 3] </dd></dl>
 
-<p>Definition at line <a class="el" href="elevator_8c_source.html#l00027">27</a> of file <a class="el" href="elevator_8c_source.html">elevator.c</a>.</p>
+<p>Definition at line <a class="el" href="elevator_8c_source.html#l00032">32</a> of file <a class="el" href="elevator_8c_source.html">elevator.c</a>.</p>
 
 </div>
 </div>

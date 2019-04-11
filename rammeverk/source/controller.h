@@ -1,9 +1,9 @@
 /**
 * @file
-* @brief Description of Elevator
+* @brief Controls the elevators behaviour
 */
-#ifndef __ELEVATOR_H__
-#define __ELEVATOR_H__
+#ifndef __CONTROLLER_H__
+#define __CONTROLLER_H__
 
 /**
 * @brief Contains all the states the FSM can have.
@@ -54,10 +54,10 @@ int getCurrentFloor();
 void updateFloorIndicatorLights();
 
 /**
-* @brief Determines which direction the elevator needs to travel.
+* @brief Determines which direction the elevator needs to travel or if the state should switch to @c WAIT.
 *
-* @return @c MOVE when the direction is either @c DIRN_UP or @c DIRN_DOWN,
-* return @c WAIT when direction is @c DIRN_STOP.
+* @return @c MOVE when there is a pending order. Return @c WAIT when
+* the elevator has reached a floor with an active order in the same direction as the elevator.
 *
 * @warning can also return @c EM_STOP if some unforeseen error occurs.
 */

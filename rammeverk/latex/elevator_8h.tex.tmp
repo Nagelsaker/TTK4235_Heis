@@ -41,17 +41,8 @@ int \hyperlink{elevator_8h_a0165a5bcb8596e257d40f2691fd15fef}{get\+Current\+Floo
 void \hyperlink{elevator_8h_a421880cfef13dce25fd9ea88d0439a9d}{update\+Floor\+Indicator\+Lights} ()\hypertarget{elevator_8h_a421880cfef13dce25fd9ea88d0439a9d}{}\label{elevator_8h_a421880cfef13dce25fd9ea88d0439a9d}
 
 \begin{DoxyCompactList}\small\item\em Updates floor indicator lights, as well as t\+\_\+floor.\+last and t\+\_\+floor.\+next. \end{DoxyCompactList}\item 
-\hyperlink{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} \hyperlink{elevator_8h_a4bf2d976c82d96e567bc0dc2d00878b5}{determine\+Direction} ()
-\begin{DoxyCompactList}\small\item\em Determines which direction the elevator needs to travel. \end{DoxyCompactList}\item 
-\hyperlink{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} {\bfseries stop\+State} ()\hypertarget{elevator_8h_aed195dfd426f90b620939eb782f0e319}{}\label{elevator_8h_aed195dfd426f90b620939eb782f0e319}
-
-\item 
-\hyperlink{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} {\bfseries down\+State} ()\hypertarget{elevator_8h_a4f756b3f5513bbca610783d3a5d7ca54}{}\label{elevator_8h_a4f756b3f5513bbca610783d3a5d7ca54}
-
-\item 
-\hyperlink{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} {\bfseries up\+State} ()\hypertarget{elevator_8h_ae967a38ac47c0e40860efc8598f8f7bd}{}\label{elevator_8h_ae967a38ac47c0e40860efc8598f8f7bd}
-
-\end{DoxyCompactItemize}
+\hyperlink{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} \hyperlink{elevator_8h_aec166bf6fecbefc027b9549f766b63bb}{determine\+Direction\+Or\+Wait} ()
+\begin{DoxyCompactList}\small\item\em Determines which direction the elevator needs to travel. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -69,13 +60,13 @@ Description of Elevator.
 
 
 \subsection{Function Documentation}
-\index{elevator.\+h@{elevator.\+h}!determine\+Direction@{determine\+Direction}}
-\index{determine\+Direction@{determine\+Direction}!elevator.\+h@{elevator.\+h}}
-\subsubsection[{\texorpdfstring{determine\+Direction()}{determineDirection()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf state} determine\+Direction (
+\index{elevator.\+h@{elevator.\+h}!determine\+Direction\+Or\+Wait@{determine\+Direction\+Or\+Wait}}
+\index{determine\+Direction\+Or\+Wait@{determine\+Direction\+Or\+Wait}!elevator.\+h@{elevator.\+h}}
+\subsubsection[{\texorpdfstring{determine\+Direction\+Or\+Wait()}{determineDirectionOrWait()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf state} determine\+Direction\+Or\+Wait (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}\hypertarget{elevator_8h_a4bf2d976c82d96e567bc0dc2d00878b5}{}\label{elevator_8h_a4bf2d976c82d96e567bc0dc2d00878b5}
+)}\hypertarget{elevator_8h_aec166bf6fecbefc027b9549f766b63bb}{}\label{elevator_8h_aec166bf6fecbefc027b9549f766b63bb}
 
 
 Determines which direction the elevator needs to travel. 
@@ -88,7 +79,7 @@ can also return {\ttfamily E\+M\+\_\+\+S\+T\+OP} if some unforeseen error occurs
 \end{DoxyWarning}
 
 
-Definition at line 68 of file elevator.\+c.
+Definition at line 73 of file elevator.\+c.
 
 \index{elevator.\+h@{elevator.\+h}!emergency\+Stop@{emergency\+Stop}}
 \index{emergency\+Stop@{emergency\+Stop}!elevator.\+h@{elevator.\+h}}
@@ -109,7 +100,7 @@ When I\+D\+LE is returned, last\+Direction = D\+I\+R\+N\+\_\+\+S\+T\+OP
 \end{DoxyWarning}
 
 
-Definition at line 6 of file elevator.\+c.
+Definition at line 11 of file elevator.\+c.
 
 \index{elevator.\+h@{elevator.\+h}!get\+Current\+Floor@{get\+Current\+Floor}}
 \index{get\+Current\+Floor@{get\+Current\+Floor}!elevator.\+h@{elevator.\+h}}
@@ -127,5 +118,5 @@ Returns the elevators current floor.
 \end{DoxyReturn}
 
 
-Definition at line 27 of file elevator.\+c.
+Definition at line 32 of file elevator.\+c.
 

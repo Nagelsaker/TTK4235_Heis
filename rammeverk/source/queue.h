@@ -1,6 +1,6 @@
 /**
 * @file
-* @brief Description of Queue
+* @brief Contains functions for checking and updating the queue.
 */
 #ifndef __QUEUE_H__
 #define __QUEUE_H__
@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "elev.h"
-#include "elevator.h"
+#include "controller.h"
 
 
 /**

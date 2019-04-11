@@ -1,5 +1,5 @@
 #include "elev.h"
-#include "elevator.h"
+#include "controller.h"
 #include "queue.h"
 #include "timer.h"
 
@@ -11,6 +11,7 @@ state upState(state returnState, int cfloor, int isMoreUpOrders, int isMoreDownO
 state emergencyStop(){
     state returnState = EM_STOP;
     elev_set_motor_direction(DIRN_STOP);          //stop elevator
+    int stopButtonPressed = elev_get_stop_signal();
 
     if ( elev_get_floor_sensor_signal() != -1 ){    //open doors if on a floor
         elev_set_door_open_lamp(1);
@@ -20,7 +21,7 @@ state emergencyStop(){
         }
     }
     resetQueueAndLights();
-    if (elev_get_stop_signal() != 1) {
+    if (stopButtonPressed != 1) {
         elev_set_stop_lamp(0);  //L6
         returnState = IDLE;
         lastDirection = DIRN_STOP;
@@ -71,6 +72,8 @@ state emergencyStop(){
 
 
 state determineDirectionOrWait() {
+    // returnState is nominally either MOVE or WAIT,
+    // could be EM_STOP if an error occurs
     state returnState = EM_STOP;
     int cfloor = getCurrentFloor();
     int isMoreUpOrders = 0;
@@ -87,7 +90,7 @@ state determineDirectionOrWait() {
         }
       }
     } // end of double for loop
-    
+
     switch(lastDirection) {
         case DIRN_STOP:
             returnState = stopState(returnState, cfloor, isMoreUpOrders, isMoreDownOrders);

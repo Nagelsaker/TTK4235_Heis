@@ -1,6 +1,6 @@
 /**
 * @file
-* @brief Description of Timer
+* @brief Contains functions that control a timer
 */
 #ifndef __TIMER_H__
 #define __TIMER_H__

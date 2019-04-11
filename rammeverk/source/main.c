@@ -1,5 +1,5 @@
 #include "elev.h"
-#include "elevator.h"
+#include "controller.h"
 #include "queue.h"
 #include "timer.h"
 #include <stdio.h>
@@ -34,6 +34,8 @@ int main() {
       if (elev_get_stop_signal()){
           elev_set_stop_lamp(1); //L6
           elev_state = EM_STOP;
+      }else{
+        elev_set_stop_lamp(0);
       }
       switch (elev_state){
           case INIT:
