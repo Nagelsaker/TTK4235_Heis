@@ -55,7 +55,7 @@ int main() {
           case MOVE:
               //set direction from queue
               //handle orders while moving
-              elev_state = determineDirectionOrWait();
+              elev_state = moveOrWait();
               break;
 
           case WAIT:

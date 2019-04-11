@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['queue',['queue',['../queue_8h.html#a85525b4774431ecb268f29677b31b7ef',1,'queue.h']]]
+  ['lastdirection',['lastDirection',['../controller_8h.html#a2055f8d01274f9ad120dda82da5c612e',1,'controller.h']]]
 ];

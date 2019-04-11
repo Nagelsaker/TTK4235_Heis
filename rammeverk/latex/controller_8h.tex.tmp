@@ -1,0 +1,122 @@
+\hypertarget{controller_8h}{}\section{source/controller.h File Reference}
+\label{controller_8h}\index{source/controller.\+h@{source/controller.\+h}}
+
+
+Controls the elevator\textquotesingle{}s movement behaviour for all the elevator states and emergency stop behaviour.  
+
+
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structt__floor}{t\+\_\+floor}
+\begin{DoxyCompactList}\small\item\em Contains the last floor the elevator hit and the next floor the elevator will visit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \hyperlink{controller_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} \hyperlink{controller_8h_a9f34354b149588b399cf9448e20069be}{state}\hypertarget{controller_8h_a9f34354b149588b399cf9448e20069be}{}\label{controller_8h_a9f34354b149588b399cf9448e20069be}
+
+\begin{DoxyCompactList}\small\item\em Contains all the states the elevator can have. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{controller_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} \{ \\*
+{\bfseries I\+N\+IT} = 0, 
+{\bfseries I\+D\+LE} = 1, 
+{\bfseries M\+O\+VE} = 2, 
+{\bfseries W\+A\+IT} = 3, 
+\\*
+{\bfseries E\+M\+\_\+\+S\+T\+OP} = 4
+ \}\hypertarget{controller_8h_adc6e5733fc3c22f0a7b2914188c49c90}{}\label{controller_8h_adc6e5733fc3c22f0a7b2914188c49c90}
+\begin{DoxyCompactList}\small\item\em Contains all the states the elevator can have. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{controller_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} \hyperlink{controller_8h_a8aa67ee49a1d275aa51b0613b799c319}{emergency\+Stop} ()
+\begin{DoxyCompactList}\small\item\em Elevator stops, queue and lights are reset and doors open for 3 seconds if the elevator is on a floor. \end{DoxyCompactList}\item 
+int \hyperlink{controller_8h_a0165a5bcb8596e257d40f2691fd15fef}{get\+Current\+Floor} ()
+\begin{DoxyCompactList}\small\item\em Returns the elevators current floor. \end{DoxyCompactList}\item 
+void \hyperlink{controller_8h_a421880cfef13dce25fd9ea88d0439a9d}{update\+Floor\+Indicator\+Lights} ()\hypertarget{controller_8h_a421880cfef13dce25fd9ea88d0439a9d}{}\label{controller_8h_a421880cfef13dce25fd9ea88d0439a9d}
+
+\begin{DoxyCompactList}\small\item\em When the elevator stops at a floor or moves past a floor, the corresponding floor indicator light is lit. The floor indicator light corresponding to the the last floor the elavtor hit is lit until the elevator hits another floor. \end{DoxyCompactList}\item 
+\hyperlink{controller_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} \hyperlink{controller_8h_a65dc9d2489abbf85bc13e6505a6c0ccc}{move\+Or\+Wait} ()
+\begin{DoxyCompactList}\small\item\em Determines if the elevator state should switch to {\ttfamily W\+A\+IT} or {\ttfamily M\+O\+VE}. if the state is switched to {\ttfamily M\+O\+VE}, movement direction is also determined. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structt__floor}{t\+\_\+floor} {\bfseries t\+\_\+floor}\hypertarget{controller_8h_aa11f0ded82cc2cb209e4489981d766e6}{}\label{controller_8h_aa11f0ded82cc2cb209e4489981d766e6}
+
+\item 
+int \hyperlink{controller_8h_a2055f8d01274f9ad120dda82da5c612e}{last\+Direction}\hypertarget{controller_8h_a2055f8d01274f9ad120dda82da5c612e}{}\label{controller_8h_a2055f8d01274f9ad120dda82da5c612e}
+
+\begin{DoxyCompactList}\small\item\em Contains the last direction the elevator moved. Possible values include \mbox{[}-\/1, 0, 1\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Controls the elevator\textquotesingle{}s movement behaviour for all the elevator states and emergency stop behaviour. 
+
+
+
+\subsection{Function Documentation}
+\index{controller.\+h@{controller.\+h}!emergency\+Stop@{emergency\+Stop}}
+\index{emergency\+Stop@{emergency\+Stop}!controller.\+h@{controller.\+h}}
+\subsubsection[{\texorpdfstring{emergency\+Stop()}{emergencyStop()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf state} emergency\+Stop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{controller_8h_a8aa67ee49a1d275aa51b0613b799c319}{}\label{controller_8h_a8aa67ee49a1d275aa51b0613b799c319}
+
+
+Elevator stops, queue and lights are reset and doors open for 3 seconds if the elevator is on a floor. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily E\+M\+\_\+\+S\+T\+OP} if S\+T\+OP button is pressed down, or if there\textquotesingle{}s less than 3 seconds since the last S\+T\+OP button push. Else return {\ttfamily I\+D\+LE} 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+When I\+D\+LE is returned, last\+Direction = D\+I\+R\+N\+\_\+\+S\+T\+OP 
+\end{DoxyWarning}
+
+
+Definition at line 11 of file controller.\+c.
+
+\index{controller.\+h@{controller.\+h}!get\+Current\+Floor@{get\+Current\+Floor}}
+\index{get\+Current\+Floor@{get\+Current\+Floor}!controller.\+h@{controller.\+h}}
+\subsubsection[{\texorpdfstring{get\+Current\+Floor()}{getCurrentFloor()}}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Current\+Floor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{controller_8h_a0165a5bcb8596e257d40f2691fd15fef}{}\label{controller_8h_a0165a5bcb8596e257d40f2691fd15fef}
+
+
+Returns the elevators current floor. 
+
+\begin{DoxyReturn}{Returns}
+-\/1 when not at any floor, otherwise return values in range \mbox{[}0, 3\mbox{]} 
+\end{DoxyReturn}
+
+
+Definition at line 33 of file controller.\+c.
+
+\index{controller.\+h@{controller.\+h}!move\+Or\+Wait@{move\+Or\+Wait}}
+\index{move\+Or\+Wait@{move\+Or\+Wait}!controller.\+h@{controller.\+h}}
+\subsubsection[{\texorpdfstring{move\+Or\+Wait()}{moveOrWait()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf state} move\+Or\+Wait (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{controller_8h_a65dc9d2489abbf85bc13e6505a6c0ccc}{}\label{controller_8h_a65dc9d2489abbf85bc13e6505a6c0ccc}
+
+
+Determines if the elevator state should switch to {\ttfamily W\+A\+IT} or {\ttfamily M\+O\+VE}. if the state is switched to {\ttfamily M\+O\+VE}, movement direction is also determined. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily M\+O\+VE} when there is a pending order. Return {\ttfamily W\+A\+IT} when the elevator has reached a floor with an active order in the same direction as the elevator.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+can also return {\ttfamily E\+M\+\_\+\+S\+T\+OP} if some unforeseen error occurs. 
+\end{DoxyWarning}
+
+
+Definition at line 74 of file controller.\+c.
+

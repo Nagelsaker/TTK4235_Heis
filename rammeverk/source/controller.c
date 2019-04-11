@@ -71,7 +71,7 @@ state emergencyStop(){
 
 
 
-state determineDirectionOrWait() {
+state moveOrWait() {
     // returnState is nominally either MOVE or WAIT,
     // could be EM_STOP if an error occurs
     state returnState = EM_STOP;

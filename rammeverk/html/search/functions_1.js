@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['determinedirectionorwait',['determineDirectionOrWait',['../elevator_8h.html#aec166bf6fecbefc027b9549f766b63bb',1,'elevator.c']]]
+  ['emergencystop',['emergencyStop',['../controller_8h.html#a8aa67ee49a1d275aa51b0613b799c319',1,'controller.c']]]
 ];

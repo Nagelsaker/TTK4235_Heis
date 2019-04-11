@@ -1,7 +1,4 @@
-/**
-* @file
-* @brief Description of Driver
-*/
+
 // Wrapper for libComedi Elevator control.
 // These functions provides an interface to the elevators in the real time lab
 //

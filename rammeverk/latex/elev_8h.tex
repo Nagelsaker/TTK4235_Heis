@@ -1,0 +1,256 @@
+\hypertarget{elev_8h}{}\section{source/elev.h File Reference}
+\label{elev_8h}\index{source/elev.\+h@{source/elev.\+h}}
+
+
+Description of Driver.  
+
+
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries N\+\_\+\+F\+L\+O\+O\+RS}~4\hypertarget{elev_8h_ae0592e3739e5e1e76234bb1caf9d1305}{}\label{elev_8h_ae0592e3739e5e1e76234bb1caf9d1305}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \hyperlink{elev_8h_aaf85d173ea1bbd3d99c5a2fcf58cba11}{tag\+\_\+elev\+\_\+motor\+\_\+direction} \hyperlink{elev_8h_a2256dfd58fecce253106f83fd2ed607f}{elev\+\_\+motor\+\_\+direction\+\_\+t}
+\item 
+typedef enum \hyperlink{elev_8h_a0c3f8374e6ebcc71f91341eb3ba6f6f9}{tag\+\_\+elev\+\_\+lamp\+\_\+type} \hyperlink{elev_8h_af61c4136fb437a2c49037e5a57c9abda}{elev\+\_\+button\+\_\+type\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{elev_8h_aaf85d173ea1bbd3d99c5a2fcf58cba11}{tag\+\_\+elev\+\_\+motor\+\_\+direction} \{ {\bfseries D\+I\+R\+N\+\_\+\+D\+O\+WN} = -\/1, 
+{\bfseries D\+I\+R\+N\+\_\+\+S\+T\+OP} = 0, 
+{\bfseries D\+I\+R\+N\+\_\+\+UP} = 1
+ \}
+\item 
+enum \hyperlink{elev_8h_a0c3f8374e6ebcc71f91341eb3ba6f6f9}{tag\+\_\+elev\+\_\+lamp\+\_\+type} \{ {\bfseries B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+UP} = 0, 
+{\bfseries B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+D\+O\+WN} = 1, 
+{\bfseries B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+M\+M\+A\+ND} = 2
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{elev_8h_a949b0e1f7c0f03ea6f92008c378e4573}{elev\+\_\+init} (void)
+\item 
+void \hyperlink{elev_8h_ac7dccb879f6e812e9d245174a0214536}{elev\+\_\+set\+\_\+motor\+\_\+direction} (\hyperlink{elev_8h_a2256dfd58fecce253106f83fd2ed607f}{elev\+\_\+motor\+\_\+direction\+\_\+t} dirn)
+\item 
+void \hyperlink{elev_8h_a6ce9a34b8677b483b0d8f9dc47b42c40}{elev\+\_\+set\+\_\+door\+\_\+open\+\_\+lamp} (int value)
+\item 
+int \hyperlink{elev_8h_acd97a0fbc9013dc954923e25e90be9df}{elev\+\_\+get\+\_\+obstruction\+\_\+signal} (void)
+\item 
+int \hyperlink{elev_8h_ab702d0ff2d7d03172b7ae3829ba13028}{elev\+\_\+get\+\_\+stop\+\_\+signal} (void)
+\item 
+void \hyperlink{elev_8h_a85de2a6536b4dd0c83bac19923500740}{elev\+\_\+set\+\_\+stop\+\_\+lamp} (int value)
+\item 
+int \hyperlink{elev_8h_a97d30b7e2538acf5647515638070fdc5}{elev\+\_\+get\+\_\+floor\+\_\+sensor\+\_\+signal} (void)
+\item 
+void \hyperlink{elev_8h_a6af53dd3ebae3a5791ba345eac84d4be}{elev\+\_\+set\+\_\+floor\+\_\+indicator} (int floor)
+\item 
+int \hyperlink{elev_8h_a2350a1635233760719700552a6cb0763}{elev\+\_\+get\+\_\+button\+\_\+signal} (\hyperlink{elev_8h_af61c4136fb437a2c49037e5a57c9abda}{elev\+\_\+button\+\_\+type\+\_\+t} button, int floor)
+\item 
+void \hyperlink{elev_8h_a9e81321c63d80ddf1699bc91593cd9d4}{elev\+\_\+set\+\_\+button\+\_\+lamp} (\hyperlink{elev_8h_af61c4136fb437a2c49037e5a57c9abda}{elev\+\_\+button\+\_\+type\+\_\+t} button, int floor, int value)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Description of Driver. 
+
+
+
+\subsection{Typedef Documentation}
+\index{elev.\+h@{elev.\+h}!elev\+\_\+button\+\_\+type\+\_\+t@{elev\+\_\+button\+\_\+type\+\_\+t}}
+\index{elev\+\_\+button\+\_\+type\+\_\+t@{elev\+\_\+button\+\_\+type\+\_\+t}!elev.\+h@{elev.\+h}}
+\subsubsection[{\texorpdfstring{elev\+\_\+button\+\_\+type\+\_\+t}{elev_button_type_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf tag\+\_\+elev\+\_\+lamp\+\_\+type}  {\bf elev\+\_\+button\+\_\+type\+\_\+t}}\hypertarget{elev_8h_af61c4136fb437a2c49037e5a57c9abda}{}\label{elev_8h_af61c4136fb437a2c49037e5a57c9abda}
+Button types for function \hyperlink{elev_8h_a9e81321c63d80ddf1699bc91593cd9d4}{elev\+\_\+set\+\_\+button\+\_\+lamp()} and elev\+\_\+get\+\_\+button(). \index{elev.\+h@{elev.\+h}!elev\+\_\+motor\+\_\+direction\+\_\+t@{elev\+\_\+motor\+\_\+direction\+\_\+t}}
+\index{elev\+\_\+motor\+\_\+direction\+\_\+t@{elev\+\_\+motor\+\_\+direction\+\_\+t}!elev.\+h@{elev.\+h}}
+\subsubsection[{\texorpdfstring{elev\+\_\+motor\+\_\+direction\+\_\+t}{elev_motor_direction_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf tag\+\_\+elev\+\_\+motor\+\_\+direction}  {\bf elev\+\_\+motor\+\_\+direction\+\_\+t}}\hypertarget{elev_8h_a2256dfd58fecce253106f83fd2ed607f}{}\label{elev_8h_a2256dfd58fecce253106f83fd2ed607f}
+Motor direction for function \hyperlink{elev_8h_ac7dccb879f6e812e9d245174a0214536}{elev\+\_\+set\+\_\+motor\+\_\+direction()}. 
+
+\subsection{Enumeration Type Documentation}
+\index{elev.\+h@{elev.\+h}!tag\+\_\+elev\+\_\+lamp\+\_\+type@{tag\+\_\+elev\+\_\+lamp\+\_\+type}}
+\index{tag\+\_\+elev\+\_\+lamp\+\_\+type@{tag\+\_\+elev\+\_\+lamp\+\_\+type}!elev.\+h@{elev.\+h}}
+\subsubsection[{\texorpdfstring{tag\+\_\+elev\+\_\+lamp\+\_\+type}{tag_elev_lamp_type}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf tag\+\_\+elev\+\_\+lamp\+\_\+type}}\hypertarget{elev_8h_a0c3f8374e6ebcc71f91341eb3ba6f6f9}{}\label{elev_8h_a0c3f8374e6ebcc71f91341eb3ba6f6f9}
+Button types for function \hyperlink{elev_8h_a9e81321c63d80ddf1699bc91593cd9d4}{elev\+\_\+set\+\_\+button\+\_\+lamp()} and elev\+\_\+get\+\_\+button(). 
+
+Definition at line 97 of file elev.\+h.
+
+\index{elev.\+h@{elev.\+h}!tag\+\_\+elev\+\_\+motor\+\_\+direction@{tag\+\_\+elev\+\_\+motor\+\_\+direction}}
+\index{tag\+\_\+elev\+\_\+motor\+\_\+direction@{tag\+\_\+elev\+\_\+motor\+\_\+direction}!elev.\+h@{elev.\+h}}
+\subsubsection[{\texorpdfstring{tag\+\_\+elev\+\_\+motor\+\_\+direction}{tag_elev_motor_direction}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf tag\+\_\+elev\+\_\+motor\+\_\+direction}}\hypertarget{elev_8h_aaf85d173ea1bbd3d99c5a2fcf58cba11}{}\label{elev_8h_aaf85d173ea1bbd3d99c5a2fcf58cba11}
+Motor direction for function \hyperlink{elev_8h_ac7dccb879f6e812e9d245174a0214536}{elev\+\_\+set\+\_\+motor\+\_\+direction()}. 
+
+Definition at line 29 of file elev.\+h.
+
+
+
+\subsection{Function Documentation}
+\index{elev.\+h@{elev.\+h}!elev\+\_\+get\+\_\+button\+\_\+signal@{elev\+\_\+get\+\_\+button\+\_\+signal}}
+\index{elev\+\_\+get\+\_\+button\+\_\+signal@{elev\+\_\+get\+\_\+button\+\_\+signal}!elev.\+h@{elev.\+h}}
+\subsubsection[{\texorpdfstring{elev\+\_\+get\+\_\+button\+\_\+signal(elev\+\_\+button\+\_\+type\+\_\+t button, int floor)}{elev_get_button_signal(elev_button_type_t button, int floor)}}]{\setlength{\rightskip}{0pt plus 5cm}int elev\+\_\+get\+\_\+button\+\_\+signal (
+\begin{DoxyParamCaption}
+\item[{{\bf elev\+\_\+button\+\_\+type\+\_\+t}}]{button, }
+\item[{int}]{floor}
+\end{DoxyParamCaption}
+)}\hypertarget{elev_8h_a2350a1635233760719700552a6cb0763}{}\label{elev_8h_a2350a1635233760719700552a6cb0763}
+Gets a button signal. 
+\begin{DoxyParams}{Parameters}
+{\em button} & Which button type to check. Can be B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+UP, B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+D\+O\+WN or B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+M\+M\+A\+ND (button "inside the elevator). \\
+\hline
+{\em floor} & Which floor to check button. Must be 0-\/3. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if button is not pushed. 1 if button is pushed. 
+\end{DoxyReturn}
+
+
+Definition at line 129 of file elev.\+c.
+
+\index{elev.\+h@{elev.\+h}!elev\+\_\+get\+\_\+floor\+\_\+sensor\+\_\+signal@{elev\+\_\+get\+\_\+floor\+\_\+sensor\+\_\+signal}}
+\index{elev\+\_\+get\+\_\+floor\+\_\+sensor\+\_\+signal@{elev\+\_\+get\+\_\+floor\+\_\+sensor\+\_\+signal}!elev.\+h@{elev.\+h}}
+\subsubsection[{\texorpdfstring{elev\+\_\+get\+\_\+floor\+\_\+sensor\+\_\+signal(void)}{elev_get_floor_sensor_signal(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int elev\+\_\+get\+\_\+floor\+\_\+sensor\+\_\+signal (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{elev_8h_a97d30b7e2538acf5647515638070fdc5}{}\label{elev_8h_a97d30b7e2538acf5647515638070fdc5}
+Get floor sensor signal. \begin{DoxyReturn}{Returns}
+-\/1 if elevator is not on a floor. 0-\/3 if elevator is on floor. 0 is ground floor, 3 is top floor. 
+\end{DoxyReturn}
+
+
+Definition at line 96 of file elev.\+c.
+
+\index{elev.\+h@{elev.\+h}!elev\+\_\+get\+\_\+obstruction\+\_\+signal@{elev\+\_\+get\+\_\+obstruction\+\_\+signal}}
+\index{elev\+\_\+get\+\_\+obstruction\+\_\+signal@{elev\+\_\+get\+\_\+obstruction\+\_\+signal}!elev.\+h@{elev.\+h}}
+\subsubsection[{\texorpdfstring{elev\+\_\+get\+\_\+obstruction\+\_\+signal(void)}{elev_get_obstruction_signal(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int elev\+\_\+get\+\_\+obstruction\+\_\+signal (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{elev_8h_acd97a0fbc9013dc954923e25e90be9df}{}\label{elev_8h_acd97a0fbc9013dc954923e25e90be9df}
+Get signal from obstruction switch. \begin{DoxyReturn}{Returns}
+1 if obstruction is enabled. 0 if not. 
+\end{DoxyReturn}
+
+
+Definition at line 81 of file elev.\+c.
+
+\index{elev.\+h@{elev.\+h}!elev\+\_\+get\+\_\+stop\+\_\+signal@{elev\+\_\+get\+\_\+stop\+\_\+signal}}
+\index{elev\+\_\+get\+\_\+stop\+\_\+signal@{elev\+\_\+get\+\_\+stop\+\_\+signal}!elev.\+h@{elev.\+h}}
+\subsubsection[{\texorpdfstring{elev\+\_\+get\+\_\+stop\+\_\+signal(void)}{elev_get_stop_signal(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int elev\+\_\+get\+\_\+stop\+\_\+signal (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{elev_8h_ab702d0ff2d7d03172b7ae3829ba13028}{}\label{elev_8h_ab702d0ff2d7d03172b7ae3829ba13028}
+Get signal from stop button. \begin{DoxyReturn}{Returns}
+1 if stop button is pushed, 0 if not. 
+\end{DoxyReturn}
+
+
+Definition at line 85 of file elev.\+c.
+
+\index{elev.\+h@{elev.\+h}!elev\+\_\+init@{elev\+\_\+init}}
+\index{elev\+\_\+init@{elev\+\_\+init}!elev.\+h@{elev.\+h}}
+\subsubsection[{\texorpdfstring{elev\+\_\+init(void)}{elev_init(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int elev\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{elev_8h_a949b0e1f7c0f03ea6f92008c378e4573}{}\label{elev_8h_a949b0e1f7c0f03ea6f92008c378e4573}
+Initialize elevator. \begin{DoxyReturn}{Returns}
+Non-\/zero on success, 0 on failure. 
+\end{DoxyReturn}
+
+
+Definition at line 33 of file elev.\+c.
+
+\index{elev.\+h@{elev.\+h}!elev\+\_\+set\+\_\+button\+\_\+lamp@{elev\+\_\+set\+\_\+button\+\_\+lamp}}
+\index{elev\+\_\+set\+\_\+button\+\_\+lamp@{elev\+\_\+set\+\_\+button\+\_\+lamp}!elev.\+h@{elev.\+h}}
+\subsubsection[{\texorpdfstring{elev\+\_\+set\+\_\+button\+\_\+lamp(elev\+\_\+button\+\_\+type\+\_\+t button, int floor, int value)}{elev_set_button_lamp(elev_button_type_t button, int floor, int value)}}]{\setlength{\rightskip}{0pt plus 5cm}void elev\+\_\+set\+\_\+button\+\_\+lamp (
+\begin{DoxyParamCaption}
+\item[{{\bf elev\+\_\+button\+\_\+type\+\_\+t}}]{button, }
+\item[{int}]{floor, }
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{elev_8h_a9e81321c63d80ddf1699bc91593cd9d4}{}\label{elev_8h_a9e81321c63d80ddf1699bc91593cd9d4}
+Set a button lamp. 
+\begin{DoxyParams}{Parameters}
+{\em lamp} & Which type of lamp to set. Can be B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+UP, B\+U\+T\+T\+O\+N\+\_\+\+C\+A\+L\+L\+\_\+\+D\+O\+WN or B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+M\+M\+A\+ND (button \char`\"{}inside\char`\"{} the elevator). \\
+\hline
+{\em floor} & Floor of lamp to set. Must be 0-\/3 \\
+\hline
+{\em value} & Non-\/zero value turns lamp on, 0 turns lamp off. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 146 of file elev.\+c.
+
+\index{elev.\+h@{elev.\+h}!elev\+\_\+set\+\_\+door\+\_\+open\+\_\+lamp@{elev\+\_\+set\+\_\+door\+\_\+open\+\_\+lamp}}
+\index{elev\+\_\+set\+\_\+door\+\_\+open\+\_\+lamp@{elev\+\_\+set\+\_\+door\+\_\+open\+\_\+lamp}!elev.\+h@{elev.\+h}}
+\subsubsection[{\texorpdfstring{elev\+\_\+set\+\_\+door\+\_\+open\+\_\+lamp(int value)}{elev_set_door_open_lamp(int value)}}]{\setlength{\rightskip}{0pt plus 5cm}void elev\+\_\+set\+\_\+door\+\_\+open\+\_\+lamp (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{elev_8h_a6ce9a34b8677b483b0d8f9dc47b42c40}{}\label{elev_8h_a6ce9a34b8677b483b0d8f9dc47b42c40}
+Turn door-\/open lamp on or off. 
+\begin{DoxyParams}{Parameters}
+{\em value} & Non-\/zero value turns lamp on, 0 turns lamp off. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 74 of file elev.\+c.
+
+\index{elev.\+h@{elev.\+h}!elev\+\_\+set\+\_\+floor\+\_\+indicator@{elev\+\_\+set\+\_\+floor\+\_\+indicator}}
+\index{elev\+\_\+set\+\_\+floor\+\_\+indicator@{elev\+\_\+set\+\_\+floor\+\_\+indicator}!elev.\+h@{elev.\+h}}
+\subsubsection[{\texorpdfstring{elev\+\_\+set\+\_\+floor\+\_\+indicator(int floor)}{elev_set_floor_indicator(int floor)}}]{\setlength{\rightskip}{0pt plus 5cm}void elev\+\_\+set\+\_\+floor\+\_\+indicator (
+\begin{DoxyParamCaption}
+\item[{int}]{floor}
+\end{DoxyParamCaption}
+)}\hypertarget{elev_8h_a6af53dd3ebae3a5791ba345eac84d4be}{}\label{elev_8h_a6af53dd3ebae3a5791ba345eac84d4be}
+Set floor indicator lamp for a given floor. 
+\begin{DoxyParams}{Parameters}
+{\em floor} & Which floor lamp to turn on. Other floor lamps are turned off. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 109 of file elev.\+c.
+
+\index{elev.\+h@{elev.\+h}!elev\+\_\+set\+\_\+motor\+\_\+direction@{elev\+\_\+set\+\_\+motor\+\_\+direction}}
+\index{elev\+\_\+set\+\_\+motor\+\_\+direction@{elev\+\_\+set\+\_\+motor\+\_\+direction}!elev.\+h@{elev.\+h}}
+\subsubsection[{\texorpdfstring{elev\+\_\+set\+\_\+motor\+\_\+direction(elev\+\_\+motor\+\_\+direction\+\_\+t dirn)}{elev_set_motor_direction(elev_motor_direction_t dirn)}}]{\setlength{\rightskip}{0pt plus 5cm}void elev\+\_\+set\+\_\+motor\+\_\+direction (
+\begin{DoxyParamCaption}
+\item[{{\bf elev\+\_\+motor\+\_\+direction\+\_\+t}}]{dirn}
+\end{DoxyParamCaption}
+)}\hypertarget{elev_8h_ac7dccb879f6e812e9d245174a0214536}{}\label{elev_8h_ac7dccb879f6e812e9d245174a0214536}
+Sets the motor direction of the elevator. 
+\begin{DoxyParams}{Parameters}
+{\em dirn} & New direction of the elevator. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 60 of file elev.\+c.
+
+\index{elev.\+h@{elev.\+h}!elev\+\_\+set\+\_\+stop\+\_\+lamp@{elev\+\_\+set\+\_\+stop\+\_\+lamp}}
+\index{elev\+\_\+set\+\_\+stop\+\_\+lamp@{elev\+\_\+set\+\_\+stop\+\_\+lamp}!elev.\+h@{elev.\+h}}
+\subsubsection[{\texorpdfstring{elev\+\_\+set\+\_\+stop\+\_\+lamp(int value)}{elev_set_stop_lamp(int value)}}]{\setlength{\rightskip}{0pt plus 5cm}void elev\+\_\+set\+\_\+stop\+\_\+lamp (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{elev_8h_a85de2a6536b4dd0c83bac19923500740}{}\label{elev_8h_a85de2a6536b4dd0c83bac19923500740}
+Turn stop lamp on or off. 
+\begin{DoxyParams}{Parameters}
+{\em value} & Non-\/zero value turns lamp on, 0 turns lamp off. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 89 of file elev.\+c.
+
